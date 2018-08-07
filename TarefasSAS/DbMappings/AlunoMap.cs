@@ -6,6 +6,7 @@ namespace TarefasSAS.API.DbMappings {
         private AlunoMap() {
             Id(a => a.Id);
             Map(a => a.Nome);
+            References(a => a.Turma);
         }
     }
 }
