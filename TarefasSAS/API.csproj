@@ -126,6 +126,7 @@
     <Compile Include="Controllers\TesteController.cs" />
     <Compile Include="DbMappings\AlunoMap.cs" />
     <Compile Include="DbMappings\ProfessorMap.cs" />
+    <Compile Include="DbMappings\ResolucaoMap.cs" />
     <Compile Include="DbMappings\TurmaMap.cs" />
     <Compile Include="DbMappings\TarefaMap.cs" />
     <Compile Include="DbMappings\QuestaoMap.cs" />

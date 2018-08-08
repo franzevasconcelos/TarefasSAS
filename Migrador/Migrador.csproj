@@ -156,6 +156,7 @@
     <Compile Include="Migrador.Designer.cs">
       <DependentUpon>Migrador.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migration002.cs" />
     <Compile Include="Migration001.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
