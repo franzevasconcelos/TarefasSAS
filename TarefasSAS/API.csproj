@@ -140,7 +140,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Persistensia\Professores.cs" />
+    <Compile Include="Persistencia\Professores.cs" />
+    <Compile Include="Persistencia\Questoes.cs" />
+    <Compile Include="Persistencia\Tarefas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

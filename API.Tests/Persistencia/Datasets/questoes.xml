@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<banco_dataset xmlns="http://tempuri.org/banco_dataset.xsd">
+  <Professor>
+    <id>1</id>
+    <nome>Professor</nome>
+  </Professor>
+  <Questao>
+    <id>1</id>
+    <pergunta>Uma pergunta</pergunta>
+    <professor_id>1</professor_id>
+  </Questao>
+
+</banco_dataset>

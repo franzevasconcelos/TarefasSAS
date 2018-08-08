@@ -6,6 +6,7 @@ namespace TarefasSAS.API.DbMappings {
         QuestaoMap() {
             Id(q => q.Id);
             Map(q => q.Pergunta);
+            References(q => q.Professor);
             HasManyToMany(q => q.Tarefas)
                 .Cascade.All()
                 .Inverse()

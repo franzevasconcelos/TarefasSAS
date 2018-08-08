@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using NHibernate;
 using TarefasSAS.API.Entidades;
 
-namespace TarefasSAS.API.Persistensia {
+namespace TarefasSAS.API.Persistencia {
     public class Professores {
         private readonly ISession _session;
 
