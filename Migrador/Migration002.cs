@@ -28,10 +28,6 @@ namespace Migrador {
                   .ForeignKey("aluno", "id");
 
             Create.Table("TarefaTurma")
-                  .WithColumn("id")
-                  .AsInt32()
-                  .PrimaryKey("pk_tarefa_turma")
-                  .Identity()
                   .WithColumn("tarefa_id")
                   .AsInt32()
                   .ForeignKey("tarefa", "id")

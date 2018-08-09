@@ -56,10 +56,6 @@ namespace Migrador {
                   .ForeignKey("professor", "id");
 
             Create.Table("TarefaQuestao")
-                  .WithColumn("id")
-                  .AsInt32()
-                  .PrimaryKey("pk_questao_tarefa")
-                  .Identity()
                   .WithColumn("tarefa_id")
                   .AsInt32()
                   .ForeignKey("tarefa", "id")
