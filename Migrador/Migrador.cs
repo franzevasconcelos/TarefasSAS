@@ -1,17 +1,23 @@
 ﻿using System;
+using System.IO;
 using System.Windows.Forms;
 using FluentMigrator.Runner;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Migrador {
     public partial class Migrador : Form {
-        private const string CaminhoBanco = @"D:\Desenvolvimento\SQLite\tarefas_sas.db";
+        private static string _caminhoBanco;
 
         public Migrador() {
             InitializeComponent();
         }
 
         private void button1_Click(object sender, EventArgs e) {
+            if (string.IsNullOrEmpty(_caminhoBanco) || !File.Exists(_caminhoBanco)){
+                MessageBox.Show(@"Por favor selecione um arquivo");
+                return;
+            }
+
             var serviceProvider = CreateServices();
 
             // Put the database update into a scope to ensure
@@ -34,7 +40,7 @@ namespace Migrador {
                                           // Add SQLite support to FluentMigrator
                                           .AddSQLite()
                                           // Set the connection string
-                                          .WithGlobalConnectionString($"Data Source={CaminhoBanco}")
+                                          .WithGlobalConnectionString($"Data Source={_caminhoBanco}")
                                           // Define the assembly containing the migrations
                                           .ScanIn(typeof(Migration001).Assembly)
                                           .For.Migrations())
@@ -53,6 +59,18 @@ namespace Migrador {
 
             // Execute the migrations
             runner.MigrateUp();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var fileDialog = new OpenFileDialog();
+            fileDialog.Filter = @"Todos os Arquivos | *.*";
+
+            if (fileDialog.ShowDialog() == DialogResult.OK)
+            {
+                txtLocalBanco.Text = fileDialog.FileName;
+                _caminhoBanco = fileDialog.FileName;
+            }
         }
     }
 }
