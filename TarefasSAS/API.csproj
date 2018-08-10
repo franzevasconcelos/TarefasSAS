@@ -128,6 +128,7 @@
     <Compile Include="DbMappings\TurmaMap.cs" />
     <Compile Include="DbMappings\TarefaMap.cs" />
     <Compile Include="DbMappings\QuestaoMap.cs" />
+    <Compile Include="DbMappings\UsuarioMap.cs" />
     <Compile Include="Entidades\Aluno.cs" />
     <Compile Include="Entidades\EntidadeBase.cs" />
     <Compile Include="Entidades\Professor.cs" />
@@ -135,6 +136,7 @@
     <Compile Include="Entidades\Resolucao.cs" />
     <Compile Include="Entidades\Tarefa.cs" />
     <Compile Include="Entidades\Turma.cs" />
+    <Compile Include="Entidades\Usuario.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
