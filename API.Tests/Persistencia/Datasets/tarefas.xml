@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<banco_dataset xmlns="http://tempuri.org/banco_dataset.xsd">
+  <Professor>
+    <id>1</id>
+    <nome>Professor Fulano</nome>
+  </Professor>
+
+  <Questao>
+    <id>1</id>
+    <pergunta>primeira pergunta</pergunta>
+    <professor_id>1</professor_id>
+  </Questao>
+  <Questao>
+    <id>2</id>
+    <pergunta>segunda pergunta</pergunta>
+    <professor_id>1</professor_id>
+  </Questao>
+  <Questao>
+    <id>3</id>
+    <pergunta>terceira pergunta</pergunta>
+    <professor_id>1</professor_id>
+  </Questao>
+  <Questao>
+    <id>4</id>
+    <pergunta>quarta pergunta</pergunta>
+    <professor_id>1</professor_id>
+  </Questao>
+
+  <Tarefa>
+    <id>1</id>
+    <professor_id>1</professor_id>
+  </Tarefa>
+  <TarefaQuestao>
+    <tarefa_id>1</tarefa_id>
+    <questao_id>1</questao_id>
+  </TarefaQuestao>
+
+  <Tarefa>
+    <id>2</id>
+    <professor_id>1</professor_id>
+  </Tarefa>
+  <TarefaQuestao>
+    <tarefa_id>2</tarefa_id>
+    <questao_id>2</questao_id>
+  </TarefaQuestao>
+
+  <Tarefa>
+    <id>3</id>
+    <professor_id>1</professor_id>
+  </Tarefa>
+  <TarefaQuestao>
+    <tarefa_id>3</tarefa_id>
+    <questao_id>3</questao_id>
+  </TarefaQuestao>
+  <TarefaQuestao>
+    <tarefa_id>3</tarefa_id>
+    <questao_id>4</questao_id>
+  </TarefaQuestao>
+
+</banco_dataset>

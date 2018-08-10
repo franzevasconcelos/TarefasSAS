@@ -8,18 +8,29 @@ namespace API.Tests.Persistencia {
         protected override string NomeXmlDataset => "questoes.xml";
 
         [Test]
+        public void DeveTrazerAsQuestoesDoProfessorCorretamente() {
+            var questoes = new Questoes(Sessao);
+
+            var questoesEncontradas = questoes.Por(idProfessor: 2);
+
+            Assert.That(questoesEncontradas.Count, Is.EqualTo(2));
+            Assert.That(questoesEncontradas[0].Id, Is.EqualTo(2));
+            Assert.That(questoesEncontradas[1].Id, Is.EqualTo(3));
+        }
+
+        [Test]
         public void DeveSalvarQuestao() {
             var prof = Sessao.Get<Professor>(1);
 
             var questoes = new Questoes(Sessao);
             questoes.Salvar(new Questao {
                                             Professor = prof,
-                                            Pergunta = "Um segunda pergunta"
+                                            Pergunta = "Um nova pergunta"
                                         });
 
-            var lista = questoes.Por(1);
+            var questoesEncontradas = questoes.Por(1);
 
-            Assert.That(lista.Count, Is.EqualTo(2));
+            Assert.That(questoesEncontradas.Count, Is.EqualTo(2));
         }
     }
 }

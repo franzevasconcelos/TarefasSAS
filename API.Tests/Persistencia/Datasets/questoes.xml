@@ -1,13 +1,28 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
+
 <banco_dataset xmlns="http://tempuri.org/banco_dataset.xsd">
   <Professor>
     <id>1</id>
-    <nome>Professor</nome>
+    <nome>Professor Fulano</nome>
   </Professor>
   <Questao>
     <id>1</id>
-    <pergunta>Uma pergunta</pergunta>
+    <pergunta>Pergunta um</pergunta>
     <professor_id>1</professor_id>
   </Questao>
 
+  <Professor>
+    <id>2</id>
+    <nome>Professor Beltrano</nome>
+  </Professor>
+  <Questao>
+    <id>2</id>
+    <pergunta>Pergunta dois</pergunta>
+    <professor_id>2</professor_id>
+  </Questao>
+  <Questao>
+    <id>3</id>
+    <pergunta>Pergunta três</pergunta>
+    <professor_id>2</professor_id>
+  </Questao>
 </banco_dataset>

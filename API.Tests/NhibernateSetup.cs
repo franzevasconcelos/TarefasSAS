@@ -16,11 +16,16 @@ namespace API.Tests {
 
         public ISessionFactory Createsessionfactory() {
             var configuration = Getconfiguation();
+            
             var sessionfactory = Fluently.Configure()
                                          .Database(SQLiteConfiguration.Standard.InMemory)
                                          .Mappings(m => m.FluentMappings.AddFromAssembly(typeof(AlunoMap)
                                                                                              .Assembly))
-                                         .ExposeConfiguration(cfg => configuration = cfg)
+                                         .ExposeConfiguration(cfg => {
+                                             cfg.SetProperty("show_sql", "True");
+                                             cfg.SetProperty("format_sql", "True");
+                                             configuration = cfg;
+                                         })
                                          .BuildSessionFactory();
 
 

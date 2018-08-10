@@ -17,10 +17,11 @@ namespace TarefasSAS.API.Persistencia {
         }
 
         public virtual IList<Questao> QuestoesPorTarefa(int idTarefa) {
-            var tarefa = new Tarefa();
+            Tarefa tarefa = null;
+
             return _session.QueryOver<Questao>()
-                           .JoinAlias(t => t.Tarefas, () => tarefa)
-                           .Where(() => tarefa.Id == idTarefa)
+                           .JoinAlias(q => q.Tarefas, () => tarefa)
+                           .Where(q => tarefa.Id == idTarefa)
                            .List();
         }
 
