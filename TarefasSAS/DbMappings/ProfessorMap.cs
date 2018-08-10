@@ -6,6 +6,7 @@ namespace TarefasSAS.API.DbMappings {
         ProfessorMap() {
             Id(p => p.Id);
             Map(p => p.Nome);
+            HasOne(p => p.Usuario);
         }
     }
 }

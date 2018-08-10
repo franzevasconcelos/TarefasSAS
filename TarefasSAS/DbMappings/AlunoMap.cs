@@ -7,6 +7,7 @@ namespace TarefasSAS.API.DbMappings {
             Id(a => a.Id);
             Map(a => a.Nome);
             References(a => a.Turma);
+            HasOne(a => a.Usuario);
         }
     }
 }
