@@ -137,6 +137,8 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Configuracoes\NhibernateSessionModule.cs" />
     <Compile Include="Configuracoes\NhibernateSetup.cs" />
+    <Compile Include="Controllers\AlunosController.cs" />
+    <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\TarefasController.cs" />
     <Compile Include="DbMappings\AlunoMap.cs" />
     <Compile Include="DbMappings\ProfessorMap.cs" />
@@ -156,9 +158,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\TipoUsuario.cs" />
     <Compile Include="Persistencia\Professores.cs" />
     <Compile Include="Persistencia\Questoes.cs" />
     <Compile Include="Persistencia\Tarefas.cs" />
+    <Compile Include="Persistencia\Usuarios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -172,7 +176,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

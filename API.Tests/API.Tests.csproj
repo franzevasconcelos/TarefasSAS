@@ -133,6 +133,7 @@
     </Compile>
     <Compile Include="Persistencia\PersistenciaBaseTest.cs" />
     <Compile Include="Persistencia\TestTarefas.cs" />
+    <Compile Include="Persistencia\TestUsuarios.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -161,6 +162,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Persistencia\Datasets\usuarios.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Persistencia\Datasets\professores.xml" />
     <Content Include="Persistencia\Datasets\questoes.xml">
       <SubType>Designer</SubType>
@@ -168,7 +172,7 @@
     <Content Include="Persistencia\Datasets\tarefas.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TarefasSAS\API.csproj">
+    <ProjectReference Include="..\API\API.csproj">
       <Project>{170BD66B-3F3C-4F24-8D1E-FB1AFE398110}</Project>
       <Name>API</Name>
     </ProjectReference>

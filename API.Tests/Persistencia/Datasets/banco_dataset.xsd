@@ -555,11 +555,7 @@
       <xs:selector xpath=".//mstns:Aluno" />
       <xs:field xpath="mstns:id" />
     </xs:unique>
-    <xs:unique name="Usuario_Constraint1" msdata:ConstraintName="Constraint1">
-      <xs:selector xpath=".//mstns:Usuario" />
-      <xs:field xpath="mstns:login" />
-    </xs:unique>
-    <xs:unique name="Constraint2" msdata:PrimaryKey="true">
+    <xs:unique name="Usuario_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:Usuario" />
       <xs:field xpath="mstns:id" />
     </xs:unique>
