@@ -7,13 +7,13 @@ using TarefasSAS.API.Persistencia;
 
 namespace TarefasSAS.API.Controllers
 {
-    public class TesteController : ApiController
+    public class TarefasController : ApiController
     {
         private readonly Professores _professores;
 
-        TesteController() : this(new Professores(NhibernateSetup.GetSession())) { }
+        TarefasController() : this(new Professores(NhibernateSetup.GetSession())) { }
 
-        TesteController(Professores professores) {
+        TarefasController(Professores professores) {
             _professores = professores;
         }
 
