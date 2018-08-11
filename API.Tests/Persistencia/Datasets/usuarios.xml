@@ -14,18 +14,16 @@
     <nome>Turma</nome>
     <professor_id>1</professor_id>
   </Turma>
-  <!--<Usuario>
+
+  <Usuario>
     <id>2</id>
     <login>aluno</login>
   </Usuario>
 
-
-
-  -->
-  <!--<Aluno>
+  <Aluno>
     <id>1</id>
     <nome>Aluno Beltrano</nome>
     <turma_id>1</turma_id>
     <usuario_id>2</usuario_id>
-  </Aluno>-->
+  </Aluno>
 </banco_dataset>

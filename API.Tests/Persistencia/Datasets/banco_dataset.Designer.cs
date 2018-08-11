@@ -42,7 +42,11 @@ namespace API.Tests.Persistencia.Datasets {
         
         private TurmaDataTable tableTurma;
         
-        private global::System.Data.DataRelation relationFK_Aluno_turma_0;
+        private global::System.Data.DataRelation relationFK_Aluno_turma_1;
+        
+        private global::System.Data.DataRelation relationFK_Aluno_usuario_0;
+        
+        private global::System.Data.DataRelation relationFK_Professor_usuario_0;
         
         private global::System.Data.DataRelation relationFK_Questao_professor_0;
         
@@ -408,7 +412,9 @@ namespace API.Tests.Persistencia.Datasets {
                     this.tableTurma.InitVars();
                 }
             }
-            this.relationFK_Aluno_turma_0 = this.Relations["FK_Aluno_turma_0"];
+            this.relationFK_Aluno_turma_1 = this.Relations["FK_Aluno_turma_1"];
+            this.relationFK_Aluno_usuario_0 = this.Relations["FK_Aluno_usuario_0"];
+            this.relationFK_Professor_usuario_0 = this.Relations["FK_Professor_usuario_0"];
             this.relationFK_Questao_professor_0 = this.Relations["FK_Questao_professor_0"];
             this.relationFK_Resolucao_aluno_0 = this.Relations["FK_Resolucao_aluno_0"];
             this.relationFK_Resolucao_questao_1 = this.Relations["FK_Resolucao_questao_1"];
@@ -447,10 +453,18 @@ namespace API.Tests.Persistencia.Datasets {
             base.Tables.Add(this.tableTarefaTurma);
             this.tableTurma = new TurmaDataTable();
             base.Tables.Add(this.tableTurma);
-            this.relationFK_Aluno_turma_0 = new global::System.Data.DataRelation("FK_Aluno_turma_0", new global::System.Data.DataColumn[] {
+            this.relationFK_Aluno_turma_1 = new global::System.Data.DataRelation("FK_Aluno_turma_1", new global::System.Data.DataColumn[] {
                         this.tableTurma.idColumn}, new global::System.Data.DataColumn[] {
                         this.tableAluno.turma_idColumn}, false);
-            this.Relations.Add(this.relationFK_Aluno_turma_0);
+            this.Relations.Add(this.relationFK_Aluno_turma_1);
+            this.relationFK_Aluno_usuario_0 = new global::System.Data.DataRelation("FK_Aluno_usuario_0", new global::System.Data.DataColumn[] {
+                        this.tableUsuario.idColumn}, new global::System.Data.DataColumn[] {
+                        this.tableAluno.usuario_idColumn}, false);
+            this.Relations.Add(this.relationFK_Aluno_usuario_0);
+            this.relationFK_Professor_usuario_0 = new global::System.Data.DataRelation("FK_Professor_usuario_0", new global::System.Data.DataColumn[] {
+                        this.tableUsuario.idColumn}, new global::System.Data.DataColumn[] {
+                        this.tableProfessor.usuario_idColumn}, false);
+            this.Relations.Add(this.relationFK_Professor_usuario_0);
             this.relationFK_Questao_professor_0 = new global::System.Data.DataRelation("FK_Questao_professor_0", new global::System.Data.DataColumn[] {
                         this.tableProfessor.idColumn}, new global::System.Data.DataColumn[] {
                         this.tableQuestao.professor_idColumn}, false);
@@ -766,7 +780,7 @@ namespace API.Tests.Persistencia.Datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public AlunoRow AddAlunoRow(long id, string nome, TurmaRow parentTurmaRowByFK_Aluno_turma_0, string email, string nascimento, long usuario_id) {
+            public AlunoRow AddAlunoRow(long id, string nome, TurmaRow parentTurmaRowByFK_Aluno_turma_1, string email, string nascimento, UsuarioRow parentUsuarioRowByFK_Aluno_usuario_0) {
                 AlunoRow rowAlunoRow = ((AlunoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         id,
@@ -774,9 +788,12 @@ namespace API.Tests.Persistencia.Datasets {
                         null,
                         email,
                         nascimento,
-                        usuario_id};
-                if ((parentTurmaRowByFK_Aluno_turma_0 != null)) {
-                    columnValuesArray[2] = parentTurmaRowByFK_Aluno_turma_0[0];
+                        null};
+                if ((parentTurmaRowByFK_Aluno_turma_1 != null)) {
+                    columnValuesArray[2] = parentTurmaRowByFK_Aluno_turma_1[0];
+                }
+                if ((parentUsuarioRowByFK_Aluno_usuario_0 != null)) {
+                    columnValuesArray[5] = parentUsuarioRowByFK_Aluno_usuario_0[0];
                 }
                 rowAlunoRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowAlunoRow);
@@ -835,6 +852,7 @@ namespace API.Tests.Persistencia.Datasets {
                 this.columnid.AllowDBNull = false;
                 this.columnid.Unique = true;
                 this.columnnome.AllowDBNull = false;
+                this.columnusuario_id.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1341,12 +1359,15 @@ namespace API.Tests.Persistencia.Datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ProfessorRow AddProfessorRow(long id, string nome, long usuario_id) {
+            public ProfessorRow AddProfessorRow(long id, string nome, UsuarioRow parentUsuarioRowByFK_Professor_usuario_0) {
                 ProfessorRow rowProfessorRow = ((ProfessorRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         id,
                         nome,
-                        usuario_id};
+                        null};
+                if ((parentUsuarioRowByFK_Professor_usuario_0 != null)) {
+                    columnValuesArray[2] = parentUsuarioRowByFK_Professor_usuario_0[0];
+                }
                 rowProfessorRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowProfessorRow);
                 return rowProfessorRow;
@@ -1395,6 +1416,7 @@ namespace API.Tests.Persistencia.Datasets {
                 this.columnid.AllowDBNull = false;
                 this.columnid.Unique = true;
                 this.columnnome.AllowDBNull = false;
+                this.columnusuario_id.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3377,12 +3399,7 @@ namespace API.Tests.Persistencia.Datasets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public long usuario_id {
                 get {
-                    try {
-                        return ((long)(this[this.tableAluno.usuario_idColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'usuario_id\' in table \'Aluno\' is DBNull.", e);
-                    }
+                    return ((long)(this[this.tableAluno.usuario_idColumn]));
                 }
                 set {
                     this[this.tableAluno.usuario_idColumn] = value;
@@ -3393,10 +3410,21 @@ namespace API.Tests.Persistencia.Datasets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public TurmaRow TurmaRow {
                 get {
-                    return ((TurmaRow)(this.GetParentRow(this.Table.ParentRelations["FK_Aluno_turma_0"])));
+                    return ((TurmaRow)(this.GetParentRow(this.Table.ParentRelations["FK_Aluno_turma_1"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Aluno_turma_0"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Aluno_turma_1"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public UsuarioRow UsuarioRow {
+                get {
+                    return ((UsuarioRow)(this.GetParentRow(this.Table.ParentRelations["FK_Aluno_usuario_0"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Aluno_usuario_0"]);
                 }
             }
             
@@ -3434,18 +3462,6 @@ namespace API.Tests.Persistencia.Datasets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetnascimentoNull() {
                 this[this.tableAluno.nascimentoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool Isusuario_idNull() {
-                return this.IsNull(this.tableAluno.usuario_idColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void Setusuario_idNull() {
-                this[this.tableAluno.usuario_idColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3495,6 +3511,28 @@ namespace API.Tests.Persistencia.Datasets {
                     this[this.tableUsuario.loginColumn] = value;
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public AlunoRow[] GetAlunoRows() {
+                if ((this.Table.ChildRelations["FK_Aluno_usuario_0"] == null)) {
+                    return new AlunoRow[0];
+                }
+                else {
+                    return ((AlunoRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Aluno_usuario_0"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ProfessorRow[] GetProfessorRows() {
+                if ((this.Table.ChildRelations["FK_Professor_usuario_0"] == null)) {
+                    return new ProfessorRow[0];
+                }
+                else {
+                    return ((ProfessorRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Professor_usuario_0"])));
+                }
+            }
         }
         
         /// <summary>
@@ -3537,12 +3575,7 @@ namespace API.Tests.Persistencia.Datasets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public long usuario_id {
                 get {
-                    try {
-                        return ((long)(this[this.tableProfessor.usuario_idColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'usuario_id\' in table \'Professor\' is DBNull.", e);
-                    }
+                    return ((long)(this[this.tableProfessor.usuario_idColumn]));
                 }
                 set {
                     this[this.tableProfessor.usuario_idColumn] = value;
@@ -3551,14 +3584,13 @@ namespace API.Tests.Persistencia.Datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool Isusuario_idNull() {
-                return this.IsNull(this.tableProfessor.usuario_idColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void Setusuario_idNull() {
-                this[this.tableProfessor.usuario_idColumn] = global::System.Convert.DBNull;
+            public UsuarioRow UsuarioRow {
+                get {
+                    return ((UsuarioRow)(this.GetParentRow(this.Table.ParentRelations["FK_Professor_usuario_0"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Professor_usuario_0"]);
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4072,11 +4104,11 @@ namespace API.Tests.Persistencia.Datasets {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public AlunoRow[] GetAlunoRows() {
-                if ((this.Table.ChildRelations["FK_Aluno_turma_0"] == null)) {
+                if ((this.Table.ChildRelations["FK_Aluno_turma_1"] == null)) {
                     return new AlunoRow[0];
                 }
                 else {
-                    return ((AlunoRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Aluno_turma_0"])));
+                    return ((AlunoRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Aluno_turma_1"])));
                 }
             }
             
@@ -4532,7 +4564,7 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::Devart.Data.SQLite.SQLiteCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM ""main"".""Aluno"" WHERE ((""id"" = :Original_id) AND (""nome"" = :Original_nome) AND ((:IsNull_turma_id = 1 AND ""turma_id"" IS NULL) OR (""turma_id"" = :Original_turma_id)) AND ((:IsNull_email = 1 AND ""email"" IS NULL) OR (""email"" = :Original_email)) AND ((:IsNull_nascimento = 1 AND ""nascimento"" IS NULL) OR (""nascimento"" = :Original_nascimento)) AND ((:IsNull_usuario_id = 1 AND ""usuario_id"" IS NULL) OR (""usuario_id"" = :Original_usuario_id)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM ""main"".""Aluno"" WHERE ((""id"" = :Original_id) AND (""nome"" = :Original_nome) AND ((:IsNull_turma_id = 1 AND ""turma_id"" IS NULL) OR (""turma_id"" = :Original_turma_id)) AND ((:IsNull_email = 1 AND ""email"" IS NULL) OR (""email"" = :Original_email)) AND ((:IsNull_nascimento = 1 AND ""nascimento"" IS NULL) OR (""nascimento"" = :Original_nascimento)) AND (""usuario_id"" = :Original_usuario_id))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::Devart.Data.SQLite.SQLiteParameter param = new global::Devart.Data.SQLite.SQLiteParameter();
             param.ParameterName = "Original_id";
@@ -4599,15 +4631,6 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "IsNull_usuario_id";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
-            param.IsNullable = true;
-            param.SourceColumn = "usuario_id";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
             param.ParameterName = "Original_usuario_id";
             param.DbType = global::System.Data.DbType.Int64;
             param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
@@ -4661,7 +4684,7 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::Devart.Data.SQLite.SQLiteCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE ""main"".""Aluno"" SET ""id"" = :id, ""nome"" = :nome, ""turma_id"" = :turma_id, ""email"" = :email, ""nascimento"" = :nascimento, ""usuario_id"" = :usuario_id WHERE ((""id"" = :Original_id) AND (""nome"" = :Original_nome) AND ((:IsNull_turma_id = 1 AND ""turma_id"" IS NULL) OR (""turma_id"" = :Original_turma_id)) AND ((:IsNull_email = 1 AND ""email"" IS NULL) OR (""email"" = :Original_email)) AND ((:IsNull_nascimento = 1 AND ""nascimento"" IS NULL) OR (""nascimento"" = :Original_nascimento)) AND ((:IsNull_usuario_id = 1 AND ""usuario_id"" IS NULL) OR (""usuario_id"" = :Original_usuario_id)))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE ""main"".""Aluno"" SET ""id"" = :id, ""nome"" = :nome, ""turma_id"" = :turma_id, ""email"" = :email, ""nascimento"" = :nascimento, ""usuario_id"" = :usuario_id WHERE ((""id"" = :Original_id) AND (""nome"" = :Original_nome) AND ((:IsNull_turma_id = 1 AND ""turma_id"" IS NULL) OR (""turma_id"" = :Original_turma_id)) AND ((:IsNull_email = 1 AND ""email"" IS NULL) OR (""email"" = :Original_email)) AND ((:IsNull_nascimento = 1 AND ""nascimento"" IS NULL) OR (""nascimento"" = :Original_nascimento)) AND (""usuario_id"" = :Original_usuario_id))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Devart.Data.SQLite.SQLiteParameter();
             param.ParameterName = "id";
@@ -4767,15 +4790,6 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "IsNull_usuario_id";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
-            param.IsNullable = true;
-            param.SourceColumn = "usuario_id";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
             param.ParameterName = "Original_usuario_id";
             param.DbType = global::System.Data.DbType.Int64;
             param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
@@ -4859,7 +4873,7 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(long Original_id, string Original_nome, global::System.Nullable<long> Original_turma_id, string Original_email, string Original_nascimento, global::System.Nullable<long> Original_usuario_id) {
+        public virtual int Delete(long Original_id, string Original_nome, global::System.Nullable<long> Original_turma_id, string Original_email, string Original_nascimento, long Original_usuario_id) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((long)(Original_id));
             if ((Original_nome == null)) {
                 throw new global::System.ArgumentNullException("Original_nome");
@@ -4891,14 +4905,7 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
                 this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[7].Value = ((string)(Original_nascimento));
             }
-            if ((Original_usuario_id.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[9].Value = ((long)(Original_usuario_id.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[9].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.DeleteCommand.Parameters[8].Value = ((long)(Original_usuario_id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4919,7 +4926,7 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(long id, string nome, global::System.Nullable<long> turma_id, string email, string nascimento, global::System.Nullable<long> usuario_id) {
+        public virtual int Insert(long id, string nome, global::System.Nullable<long> turma_id, string email, string nascimento, long usuario_id) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((long)(id));
             if ((nome == null)) {
                 throw new global::System.ArgumentNullException("nome");
@@ -4945,12 +4952,7 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
             else {
                 this.Adapter.InsertCommand.Parameters[4].Value = ((string)(nascimento));
             }
-            if ((usuario_id.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((long)(usuario_id.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.InsertCommand.Parameters[5].Value = ((long)(usuario_id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4971,7 +4973,7 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(long id, string nome, global::System.Nullable<long> turma_id, string email, string nascimento, global::System.Nullable<long> usuario_id, long Original_id, string Original_nome, global::System.Nullable<long> Original_turma_id, string Original_email, string Original_nascimento, global::System.Nullable<long> Original_usuario_id) {
+        public virtual int Update(long id, string nome, global::System.Nullable<long> turma_id, string email, string nascimento, long usuario_id, long Original_id, string Original_nome, global::System.Nullable<long> Original_turma_id, string Original_email, string Original_nascimento, long Original_usuario_id) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((long)(id));
             if ((nome == null)) {
                 throw new global::System.ArgumentNullException("nome");
@@ -4997,12 +4999,7 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(nascimento));
             }
-            if ((usuario_id.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((long)(usuario_id.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((long)(usuario_id));
             this.Adapter.UpdateCommand.Parameters[6].Value = ((long)(Original_id));
             if ((Original_nome == null)) {
                 throw new global::System.ArgumentNullException("Original_nome");
@@ -5034,14 +5031,7 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
                 this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
                 this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Original_nascimento));
             }
-            if ((Original_usuario_id.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((long)(Original_usuario_id.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.UpdateCommand.Parameters[14].Value = ((long)(Original_usuario_id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5062,7 +5052,7 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string nome, global::System.Nullable<long> turma_id, string email, string nascimento, global::System.Nullable<long> usuario_id, long Original_id, string Original_nome, global::System.Nullable<long> Original_turma_id, string Original_email, string Original_nascimento, global::System.Nullable<long> Original_usuario_id) {
+        public virtual int Update(string nome, global::System.Nullable<long> turma_id, string email, string nascimento, long usuario_id, long Original_id, string Original_nome, global::System.Nullable<long> Original_turma_id, string Original_email, string Original_nascimento, long Original_usuario_id) {
             return this.Update(Original_id, nome, turma_id, email, nascimento, usuario_id, Original_id, Original_nome, Original_turma_id, Original_email, Original_nascimento, Original_usuario_id);
         }
     }
@@ -5561,8 +5551,7 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
             this._adapter.DeleteCommand = new global::Devart.Data.SQLite.SQLiteCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
             this._adapter.DeleteCommand.CommandText = "DELETE FROM \"main\".\"Professor\" WHERE ((\"id\" = :Original_id) AND (\"nome\" = :Origin" +
-                "al_nome) AND ((:IsNull_usuario_id = 1 AND \"usuario_id\" IS NULL) OR (\"usuario_id\"" +
-                " = :Original_usuario_id)))";
+                "al_nome) AND (\"usuario_id\" = :Original_usuario_id))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::Devart.Data.SQLite.SQLiteParameter param = new global::Devart.Data.SQLite.SQLiteParameter();
             param.ParameterName = "Original_id";
@@ -5578,15 +5567,6 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
             param.IsNullable = true;
             param.SourceColumn = "nome";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "IsNull_usuario_id";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
-            param.IsNullable = true;
-            param.SourceColumn = "usuario_id";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
             param.ParameterName = "Original_usuario_id";
@@ -5624,9 +5604,8 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
             this._adapter.UpdateCommand = new global::Devart.Data.SQLite.SQLiteCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = "UPDATE \"main\".\"Professor\" SET \"id\" = :id, \"nome\" = :nome, \"usuario_id\" = :usuario" +
-                "_id WHERE ((\"id\" = :Original_id) AND (\"nome\" = :Original_nome) AND ((:IsNull_usu" +
-                "ario_id = 1 AND \"usuario_id\" IS NULL) OR (\"usuario_id\" = :Original_usuario_id)))" +
-                "";
+                "_id WHERE ((\"id\" = :Original_id) AND (\"nome\" = :Original_nome) AND (\"usuario_id\"" +
+                " = :Original_usuario_id))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Devart.Data.SQLite.SQLiteParameter();
             param.ParameterName = "id";
@@ -5662,15 +5641,6 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
             param.IsNullable = true;
             param.SourceColumn = "nome";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "IsNull_usuario_id";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
-            param.IsNullable = true;
-            param.SourceColumn = "usuario_id";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
             param.ParameterName = "Original_usuario_id";
@@ -5756,7 +5726,7 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(long Original_id, string Original_nome, global::System.Nullable<long> Original_usuario_id) {
+        public virtual int Delete(long Original_id, string Original_nome, long Original_usuario_id) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((long)(Original_id));
             if ((Original_nome == null)) {
                 throw new global::System.ArgumentNullException("Original_nome");
@@ -5764,14 +5734,7 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
             else {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_nome));
             }
-            if ((Original_usuario_id.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((long)(Original_usuario_id.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[3].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((long)(Original_usuario_id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5792,7 +5755,7 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(long id, string nome, global::System.Nullable<long> usuario_id) {
+        public virtual int Insert(long id, string nome, long usuario_id) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((long)(id));
             if ((nome == null)) {
                 throw new global::System.ArgumentNullException("nome");
@@ -5800,12 +5763,7 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
             else {
                 this.Adapter.InsertCommand.Parameters[1].Value = ((string)(nome));
             }
-            if ((usuario_id.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((long)(usuario_id.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.InsertCommand.Parameters[2].Value = ((long)(usuario_id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5826,7 +5784,7 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(long id, string nome, global::System.Nullable<long> usuario_id, long Original_id, string Original_nome, global::System.Nullable<long> Original_usuario_id) {
+        public virtual int Update(long id, string nome, long usuario_id, long Original_id, string Original_nome, long Original_usuario_id) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((long)(id));
             if ((nome == null)) {
                 throw new global::System.ArgumentNullException("nome");
@@ -5834,12 +5792,7 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(nome));
             }
-            if ((usuario_id.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((long)(usuario_id.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((long)(usuario_id));
             this.Adapter.UpdateCommand.Parameters[3].Value = ((long)(Original_id));
             if ((Original_nome == null)) {
                 throw new global::System.ArgumentNullException("Original_nome");
@@ -5847,14 +5800,7 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Original_nome));
             }
-            if ((Original_usuario_id.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((long)(Original_usuario_id.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((long)(Original_usuario_id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5875,7 +5821,7 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string nome, global::System.Nullable<long> usuario_id, long Original_id, string Original_nome, global::System.Nullable<long> Original_usuario_id) {
+        public virtual int Update(string nome, long usuario_id, long Original_id, string Original_nome, long Original_usuario_id) {
             return this.Update(Original_id, nome, usuario_id, Original_id, Original_nome, Original_usuario_id);
         }
     }
@@ -8400,6 +8346,15 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private int UpdateUpdatedRows(banco_dataset dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
+            if ((this._usuarioTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Usuario.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._usuarioTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._professorTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Professor.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -8445,15 +8400,6 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._usuarioTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Usuario.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._usuarioTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._resolucaoTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Resolucao.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -8491,6 +8437,14 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private int UpdateInsertedRows(banco_dataset dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
+            if ((this._usuarioTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Usuario.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._usuarioTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._professorTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.Professor.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -8528,14 +8482,6 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._tarefaTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._usuarioTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Usuario.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._usuarioTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -8597,14 +8543,6 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._usuarioTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Usuario.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._usuarioTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._tarefaTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.Tarefa.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -8642,6 +8580,14 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._professorTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._usuarioTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Usuario.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._usuarioTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }

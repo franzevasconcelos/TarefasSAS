@@ -5,12 +5,11 @@ using TarefasSAS.API.Models;
 namespace TarefasSAS.API.Persistencia {
     public class Usuarios {
         private readonly ISession _session;
-
         public Usuarios(ISession session) {
             this._session = session;
         }
 
-        public TipoUsuario ObterUsuario(string login) {
+        public virtual TipoUsuario ObterUsuario(string login) {
             Usuario usuario1 = null;
             var professor = _session.QueryOver<Professor>()
                                     .JoinAlias(p => p.Usuario, () => usuario1)

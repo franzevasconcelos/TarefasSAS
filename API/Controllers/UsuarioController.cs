@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
+﻿using System.Web.Http;
 using TarefasSAS.API.Configuracoes;
 using TarefasSAS.API.Persistencia;
 
@@ -19,6 +14,9 @@ namespace TarefasSAS.API.Controllers {
 
         [HttpGet]
         public IHttpActionResult Index(string login) {
+            if (string.IsNullOrEmpty(login))
+                return BadRequest("Informe o login");
+
             var retorno = _usuarios.ObterUsuario(login);
 
             if(retorno == null)

@@ -1,9 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
 <banco_dataset xmlns="http://tempuri.org/banco_dataset.xsd">
+  <Usuario>
+    <id>1</id>
+    <login>1</login>
+  </Usuario>
+
+  <Usuario>
+    <id>2</id>
+    <login>2</login>
+  </Usuario>
+
   <Professor>
     <id>1</id>
     <nome>Professor Fulano</nome>
+    <usuario_id>1</usuario_id>
   </Professor>
   <Questao>
     <id>1</id>
@@ -14,6 +25,7 @@
   <Professor>
     <id>2</id>
     <nome>Professor Beltrano</nome>
+    <usuario_id>2</usuario_id>
   </Professor>
   <Questao>
     <id>2</id>

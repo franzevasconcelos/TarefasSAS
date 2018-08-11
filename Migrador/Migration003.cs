@@ -5,35 +5,9 @@ using FluentMigrator;
 using Newtonsoft.Json.Linq;
 
 namespace Migrador {
-    [Migration(3, "Novas colunas em aluno e professor. Carregamento de alguns dados no banco.")]
+    [Migration(3, "Carregamento de alguns dados no banco.")]
     public class Migration003 : Migration {
         public override void Up() {
-            Create.Table("Usuario")
-                  .WithColumn("id")
-                  .AsInt32()
-                  .PrimaryKey()
-                  .Identity()
-                  .WithColumn("login")
-                  .AsString(100);
-
-            Alter.Table("Professor")
-                 .AddColumn("usuario_id")
-                 .AsInt32()
-                 .ForeignKey("usuario", "id")
-                 .Nullable();
-
-            Alter.Table("Aluno")
-                 .AddColumn("email")
-                 .AsString(50)
-                 .Nullable()
-                 .AddColumn("nascimento")
-                 .AsString(20)
-                 .Nullable()
-                 .AddColumn("usuario_id")
-                 .AsInt32()
-                 .ForeignKey("usuario", "id")
-                 .Nullable();
-
             PreencherTabelas();
         }
 
