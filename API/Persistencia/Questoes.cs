@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using NHibernate;
 using TarefasSAS.API.Entidades;
 
@@ -14,7 +15,11 @@ namespace TarefasSAS.API.Persistencia {
             _sessao.SaveOrUpdate(questao);
         }
 
-        public virtual IList<Questao> Por(int idProfessor) {
+        public virtual Questao Por(int id) {
+            return _sessao.Query<Questao>().Where(q => q.Id == id).SingleOrDefault();
+        }
+
+        public virtual IList<Questao> PorProfessor(int idProfessor) {
             return _sessao.QueryOver<Questao>()
                           .Where(q => q.Professor.Id == idProfessor)
                           .List();

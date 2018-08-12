@@ -1,5 +1,8 @@
-﻿using System.Web.Http;
+﻿using System.Collections.Generic;
+using System.Web.Http;
+using AutoMapper;
 using TarefasSAS.API.Configuracoes;
+using TarefasSAS.API.Entidades;
 using TarefasSAS.API.Persistencia;
 
 namespace TarefasSAS.API.Controllers
@@ -14,6 +17,12 @@ namespace TarefasSAS.API.Controllers
             _tarefas = tarefas;
         }
 
+        public IHttpActionResult Salvar(Interface.Tarefa tarefa) {
+            var tarefaMapeada = Mapper.Map<Tarefa>(tarefa);
+            _tarefas.Salvar(tarefaMapeada);
+            return Ok();
+        }
+
         [HttpGet]
         public IHttpActionResult Listar(int idProfessor) {
             if (idProfessor <= 0) {
@@ -25,7 +34,9 @@ namespace TarefasSAS.API.Controllers
             if (tarefas == null)
                 return NotFound();
 
-            return Ok(tarefas);
+            var tarefasMapeadas = Mapper.Map<List<Interface.Tarefa>>(tarefas);
+
+            return Ok(tarefasMapeadas);
         }
     }
 }

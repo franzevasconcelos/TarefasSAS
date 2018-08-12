@@ -13,5 +13,9 @@ namespace TarefasSAS.API.Persistencia {
         public IList<Professor> Todos() {
             return _session.QueryOver<Professor>().List();
         }
+
+        public virtual Professor Por(int id) {
+            return _session.Get<Professor>(id);
+        }
     }
 }

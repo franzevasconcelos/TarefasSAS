@@ -1,5 +1,7 @@
 ﻿using System.Web.Http;
+using AutoMapper;
 using TarefasSAS.API.Configuracoes;
+using TarefasSAS.API.Mappers;
 
 namespace TarefasSAS.API
 {
@@ -9,6 +11,7 @@ namespace TarefasSAS.API
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
             NhibernateSetup.Init();
+            Mapper.Initialize(cfg => cfg.AddProfiles(typeof(QuestaoMapper).Assembly));
         }
     }
 }

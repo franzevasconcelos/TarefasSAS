@@ -21,7 +21,7 @@ namespace View.Controllers {
             Stream stream = null;
 
             try {
-                stream = webClient.OpenRead(API.Login() + login);
+                stream = webClient.OpenRead(APIUrl.Login(login));
             } catch (WebException ex) {
                 if (((HttpWebResponse) ex.Response).StatusCode == HttpStatusCode.NotFound) {
                     ModelState.AddModelError(string.Empty, "Usário não encontrado.");
@@ -52,7 +52,7 @@ namespace View.Controllers {
             Response.Cookies.Add(infoCookie);
 
             if (usuario.Tipo == "Professor")
-                return RedirectToAction("Professor");
+                return RedirectToAction("Index", "Professor");
 
             return RedirectToAction("Aluno");
         }
@@ -66,10 +66,6 @@ namespace View.Controllers {
             return RedirectToAction("Index");
         }
 
-        [Authorize(Roles = "Professor")]
-        public ActionResult Professor() {
-            return View();
-        }
 
         [Authorize(Roles = "Aluno")]
         public ActionResult Aluno() {

@@ -11,7 +11,7 @@ namespace API.Tests.Persistencia {
         public void DeveTrazerAsQuestoesDoProfessorCorretamente() {
             var questoes = new Questoes(Sessao);
 
-            var questoesEncontradas = questoes.Por(idProfessor: 2);
+            var questoesEncontradas = questoes.PorProfessor(idProfessor: 2);
 
             Assert.That(questoesEncontradas.Count, Is.EqualTo(2));
             Assert.That(questoesEncontradas[0].Id, Is.EqualTo(2));
@@ -28,7 +28,7 @@ namespace API.Tests.Persistencia {
                                             Pergunta = "Um nova pergunta"
                                         });
 
-            var questoesEncontradas = questoes.Por(1);
+            var questoesEncontradas = questoes.PorProfessor(1);
 
             Assert.That(questoesEncontradas.Count, Is.EqualTo(2));
         }
