@@ -52,5 +52,19 @@ namespace TarefasSAS.API.Controllers {
 
             return Ok();
         }
+
+        [HttpGet]
+        public IHttpActionResult ObterAlunos(int idTurma, int idTarefa) {
+            var alunos = _turmas.ObterAlunos(idTurma);
+            var alunosMapeados = Mapper.Map<List<Interface.AlunoTarefa>>(alunos);
+
+            foreach (var item in alunosMapeados) {
+                var resolucao = _resolucoes.ResolucaoTarefaPorTarefaEAluno(item.Id, idTarefa);
+                item.TarefaResolvida = resolucao.Enviada;
+                item.IdTarefa = idTarefa;
+            }
+
+            return Ok(alunosMapeados);
+        }
     }
 }

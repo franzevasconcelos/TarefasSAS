@@ -43,5 +43,17 @@ namespace TarefasSAS.API.Persistencia {
                            .And(r => aluno.Id == idAluno)
                            .List();
         }
+
+        public ResolucaoTarefa ResolucaoTarefaPorTarefaEAluno(int idAluno, int idTarefa) {
+            Tarefa tarefa = null;
+            Aluno aluno = null;
+
+            return _session.QueryOver<ResolucaoTarefa>()
+                           .JoinAlias(r => r.Aluno, () => aluno)
+                           .JoinAlias(r => r.Tarefa, () => tarefa)
+                           .Where(() => aluno.Id == idAluno)
+                           .And(() => tarefa.Id == idTarefa)
+                           .SingleOrDefault();
+        }
     }
 }

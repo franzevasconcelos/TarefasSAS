@@ -25,7 +25,7 @@ namespace View.Mappers {
                                                        IdAluno = questao.IdAluno,
                                                        Id = questao.Id,
                                                        Resposta = questao.Resposta,
-                                                       Cometario = questao.Comentario,
+                                                       Comentario = questao.Comentario,
                                                        IdProfessor = questao.IdProfessor
                                                    });
             }

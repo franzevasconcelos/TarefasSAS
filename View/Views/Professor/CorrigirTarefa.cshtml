@@ -1,0 +1,36 @@
+﻿@model View.ViewModels.TarefaViewModel
+
+@{
+    ViewBag.Title = "Corrigir tarefa";
+}
+
+<h2>Corrigir tarefa @Model.Id</h2>
+<hr/>
+<div class="row">
+    <div class="col-md-5">
+        @Html.HiddenFor(m => m.Id)
+        <div class="form-group">
+            <label>Selecione uma turma</label>
+            @Html.DropDownListFor(m => m.TurmaEscolhida, new SelectList(Model.Turmas, "Id", "Nome"), new { @class = "form-control" })
+        </div>
+        <button type="button" class="btn btn-primary" id="btnCarregarAlunos">Carregar alunos</button>
+    </div>
+</div>
+<div id="turmaAlunos">
+
+</div>
+
+<script type="text/javascript">
+    $().ready(function() {
+        $("#btnCarregarAlunos").click(function () {
+            var turmaEscolhida = $("#TurmaEscolhida").val();
+            var idTarefa = $('#Id').val();
+
+            $.get('@Url.Action("ObterAlunos")?TurmaEscolhida=' + turmaEscolhida +'&id=' + idTarefa,
+                function(data) {
+                    $('#turmaAlunos').html(data);
+                });
+        });
+    })
+
+</script>

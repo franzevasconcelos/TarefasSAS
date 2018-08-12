@@ -1,0 +1,20 @@
+﻿@model List<View.ViewModels.AlunoTarefaViewModel>
+<h4>Alunos da turma </h4>
+<div class="row">
+    <div class="col-md-5">
+        <table class=" table ">
+            @for (var i = 0; i < Model.Count; i++)
+            {
+            <tr>
+                <td><label>@Model[i].Nome</label></td>
+                <td class="col-md-1">
+                    @if (Model[i].TarefaResolvida)
+                    {
+                        @Html.ActionLink("Corrigir", "AbrirResolucao", new { idAluno = Model[i].Id, idTarefa = Model[i].IdTarefa }, new { @class = "btn btn-sm btn-default" })
+                }
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

@@ -116,5 +116,47 @@ namespace View.Controllers {
 
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        public ActionResult CorrigirTarefa(int idTarefa) {
+            using (var client = new WebClient()) {
+                try {
+                    var obj = client.DownloadString(APIUrl.Turmas(Convert.ToInt32(User.Identity.Name)));
+                    var turmas = JsonConvert.DeserializeObject(obj, typeof(List<Interface.Turma>));
+
+                    var viewModel = Mapper.Map<TarefaViewModel>(turmas);
+                    viewModel.Id = idTarefa;
+
+                    return View(viewModel);
+                } catch (WebException ex) {
+                    ModelState.AddModelError(string.Empty, ex.Message);
+                    return View();
+                }
+            }
+        }
+
+        public ActionResult ObterAlunos(TarefaViewModel viewModel) {
+            using (var client = new WebClient()) {
+                try {
+                    var obj = client.DownloadString(APIUrl.TurmaObterAlunos(viewModel.TurmaEscolhida, viewModel.Id));
+                    var alunos = JsonConvert.DeserializeObject(obj, typeof(List<Interface.AlunoTarefa>));
+
+                    var listaAlunoViewModel = Mapper.Map<List<AlunoTarefaViewModel>>(alunos);
+
+                    foreach (var lista in listaAlunoViewModel) {
+                        lista.IdTarefa = viewModel.Id;
+                    }
+
+                    return PartialView("_ListaAlunos", listaAlunoViewModel);
+                } catch (WebException ex) {
+                    ModelState.AddModelError(string.Empty, ex.Message);
+                    return null;
+                }
+            }
+        }
+
+        public ActionResult AbrirResolucao(int idAluno, int idTarefa) {
+            return null;
+        }
     }
 }

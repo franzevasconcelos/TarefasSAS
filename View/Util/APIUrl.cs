@@ -46,6 +46,10 @@ namespace View.Util {
             return EnderecoBase() + $"turma/SalvarTarefa";
         }
 
+        public static string TurmaObterAlunos(int idTurma, int idTarefa) {
+            return EnderecoBase() + $"turma/obteralunos?idTurma={idTurma}&idTarefa={idTarefa}";
+        }
+
         public static string EnviarTarefaParaCorrecao() {
             return EnderecoBase() + $"resolucaotarefa/LiberarParaCorrecao";
         }

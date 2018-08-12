@@ -171,6 +171,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Mappers\AlunoMapper.cs" />
     <Compile Include="Mappers\QuestaoMapper.cs" />
     <Compile Include="Mappers\ResolucaoMapper.cs" />
     <Compile Include="Mappers\TarefaMapper.cs" />

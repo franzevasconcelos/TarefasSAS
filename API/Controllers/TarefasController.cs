@@ -68,7 +68,7 @@ namespace TarefasSAS.API.Controllers {
 
             if (listaResolucaoQuestao.Any()) {
                 foreach (var item in resolucaoMapeada.Questoes) {
-                    item.Cometario = listaResolucaoQuestao.FirstOrDefault(l => l.Questao.Id == item.Id)?.Comentario;
+                    item.Comentario = listaResolucaoQuestao.FirstOrDefault(l => l.Questao.Id == item.Id)?.Comentario;
                     item.Resposta= listaResolucaoQuestao.FirstOrDefault(l => l.Questao.Id == item.Id)?.Resposta;
                 }
             }

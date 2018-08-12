@@ -28,7 +28,7 @@ namespace TarefasSAS.API.Mappers {
 
             if (listaResolucoes.Any()) {
                 foreach (var resolucaoQuestao in listaResolucoes) {
-                    resolucaoQuestao.Comentario = arg.Questoes.First(q => q.Id == resolucaoQuestao.Questao.Id).Cometario;
+                    resolucaoQuestao.Comentario = arg.Questoes.First(q => q.Id == resolucaoQuestao.Questao.Id).Comentario;
                     resolucaoQuestao.Resposta = arg.Questoes.First(q => q.Id == resolucaoQuestao.Questao.Id).Resposta;
                 }
             }
@@ -52,7 +52,7 @@ namespace TarefasSAS.API.Mappers {
                 resolucaoQuestao.Tarefa = tarefa;
                 resolucaoQuestao.Aluno = aluno;
                 resolucaoQuestao.Resposta = questao.Resposta;
-                resolucaoQuestao.Comentario = questao.Cometario;
+                resolucaoQuestao.Comentario = questao.Comentario;
 
                 resolucaoQuestao.Questao = questoes.Por(questao.Id);
 

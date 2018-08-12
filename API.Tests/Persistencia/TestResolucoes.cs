@@ -15,5 +15,14 @@ namespace API.Tests.Persistencia
 
             Assert.That(tarefas.Count, Is.EqualTo(1));
         }
+
+        [Test]
+        public void DeveTrazerResolucaTarefaPorAlunoETarefa() {
+            var resolucoes = new Resolucoes(Sessao);
+
+            var resolucaoTarefa = resolucoes.ResolucaoTarefaPorTarefaEAluno(1, 3);
+
+            Assert.That(resolucaoTarefa, Is.Not.Null);
+        }
     }
 }
