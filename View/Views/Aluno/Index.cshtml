@@ -1,0 +1,52 @@
+﻿@model List<View.ViewModels.ResolucaoViewModel>
+
+@{
+    ViewBag.Title = "Área do aluno";
+}
+
+<h2>Área do aluno</h2>
+<hr/>
+<span>Minhas tarefas</span>
+<div class="row">
+    <div class="col-md-8">
+        @if (Model != null && Model.Any()) {
+            <table class="table table-condensed table-bordered">
+                <thead>
+                <tr>
+                    <td>Tarefa</td>
+                    <td class="col-md-2">Resolver</td>
+                    <td class="col-md-2">Enviar para correção</td>
+                    <td class="col-md-1">Nota</td>
+                </tr>
+                </thead>
+                <tbody>
+                @for (var i = 0; i < Model.Count; i++) {
+                    <tr>
+                        <td>
+                            Tarefa @Model[i].IdTarefa
+                        </td>
+                        @if (Model[i].Enviada) {
+                            <td>
+                                <label>Aguardando nota</label>
+                            </td>
+                            <td>
+                                <label>Tarefa enviada para correção</label>
+                            </td>
+                        } else {
+                            <td>
+                                @Html.ActionLink("Resolver", "ResolverTarefa", new {idTarefa = Model[i].IdTarefa}, new {@class = "btn btn-default btn-sm"})
+                            </td>
+                            <td>
+                                @Html.ActionLink("Enviar para correção", "EnviarParaCorrecao", new {idResolucao = Model[i].Id}, new {@class = "btn btn-default btn-sm"})
+                            </td>
+                        }
+                        <td>
+                            @Model[i].Nota
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        }
+    </div>
+</div>

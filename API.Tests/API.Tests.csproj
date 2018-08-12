@@ -153,6 +153,7 @@
       <DependentUpon>banco_dataset.xsd</DependentUpon>
     </Compile>
     <Compile Include="Persistencia\PersistenciaBaseTest.cs" />
+    <Compile Include="Persistencia\TestResolucoes.cs" />
     <Compile Include="Persistencia\TestTarefas.cs" />
     <Compile Include="Persistencia\TestUsuarios.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -183,6 +184,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Persistencia\Datasets\resolucoes.xml" />
     <Content Include="Persistencia\Datasets\usuarios.xml">
       <SubType>Designer</SubType>
     </Content>

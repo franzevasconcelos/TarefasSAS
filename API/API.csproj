@@ -146,12 +146,15 @@
     <Compile Include="Configuracoes\NhibernateSetup.cs" />
     <Compile Include="Controllers\AlunosController.cs" />
     <Compile Include="Controllers\QuestoesController.cs" />
+    <Compile Include="Controllers\ResolucaoQuestaoController.cs" />
+    <Compile Include="Controllers\ResolucaoTarefaController.cs" />
     <Compile Include="Controllers\TurmaController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\TarefasController.cs" />
     <Compile Include="DbMappings\AlunoMap.cs" />
     <Compile Include="DbMappings\ProfessorMap.cs" />
-    <Compile Include="DbMappings\ResolucaoMap.cs" />
+    <Compile Include="DbMappings\ResolucaoQuestaoMap.cs" />
+    <Compile Include="DbMappings\ResolucaoTarefaMap.cs" />
     <Compile Include="DbMappings\TurmaMap.cs" />
     <Compile Include="DbMappings\TarefaMap.cs" />
     <Compile Include="DbMappings\QuestaoMap.cs" />
@@ -160,7 +163,8 @@
     <Compile Include="Entidades\EntidadeBase.cs" />
     <Compile Include="Entidades\Professor.cs" />
     <Compile Include="Entidades\Questao.cs" />
-    <Compile Include="Entidades\Resolucao.cs" />
+    <Compile Include="Entidades\ResolucaoQuestao.cs" />
+    <Compile Include="Entidades\ResolucaoTarefa.cs" />
     <Compile Include="Entidades\Tarefa.cs" />
     <Compile Include="Entidades\Turma.cs" />
     <Compile Include="Entidades\Usuario.cs" />
@@ -168,11 +172,14 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Mappers\QuestaoMapper.cs" />
+    <Compile Include="Mappers\ResolucaoMapper.cs" />
     <Compile Include="Mappers\TarefaMapper.cs" />
     <Compile Include="Mappers\TurmaMapper.cs" />
     <Compile Include="Models\TipoUsuario.cs" />
+    <Compile Include="Persistencia\Alunos.cs" />
     <Compile Include="Persistencia\Professores.cs" />
     <Compile Include="Persistencia\Questoes.cs" />
+    <Compile Include="Persistencia\Resolucoes.cs" />
     <Compile Include="Persistencia\Tarefas.cs" />
     <Compile Include="Persistencia\Turmas.cs" />
     <Compile Include="Persistencia\Usuarios.cs" />

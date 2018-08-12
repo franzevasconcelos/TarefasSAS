@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Questao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resolucao.cs" />
     <Compile Include="Tarefa.cs" />
     <Compile Include="TarefaTurma.cs" />
     <Compile Include="Turma.cs" />

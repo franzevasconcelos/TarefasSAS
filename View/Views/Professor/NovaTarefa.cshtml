@@ -8,7 +8,7 @@
 
 <h4>Selecione as questões a incluir na tarefa</h4>
 @using (Html.BeginForm()) {
-    if (Model.Questoes.Any()) {
+    if (Model?.Questoes != null && Model.Questoes.Any()) {
          <table class="table table-bordered">
              <thead>
              <tr>

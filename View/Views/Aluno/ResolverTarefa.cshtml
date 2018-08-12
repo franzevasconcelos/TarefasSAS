@@ -1,0 +1,22 @@
+﻿@model View.ViewModels.ResolucaoViewModel
+
+@{
+    ViewBag.Title = "Resolver Tarefa " + Model.IdTarefa;
+}
+
+<h2>Resolver Tarefa @Model.IdTarefa</h2>
+
+<hr/>
+@using (Html.BeginForm()) {
+    @Html.HiddenFor(m => m.IdTarefa)
+    for (var i = 0; i < Model.Questoes.Count; i++) {
+        <div class="form-group">
+            <div class="cols-md-12">
+                @(i+1)) @Html.Label($"Questoes[i].Pergunta", Model.Questoes[i].Pergunta)
+                @Html.Hidden($"Questoes[{i}].Id", Model.Questoes[i].Id)
+                @Html.TextArea($"Questoes[{i}].Resposta", Model.Questoes[i].Resposta, new {@class = "form-control"})
+            </div>
+        </div>
+    }
+    <button type="submit" class="btn btn-primary">Salvar</button>
+}

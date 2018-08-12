@@ -26,12 +26,28 @@ namespace View.Util {
             return EnderecoBase() + $"tarefas/listar?idProfessor={idProfessor}";
         }
 
+        public static string TarefasAResolver(int idAluno) {
+            return EnderecoBase() + $"tarefas/aresolver?idAluno={idAluno}";
+        }
+
+        public static string TarefaPorId(int idTarefa, int idAluno) {
+            return EnderecoBase() + $"tarefas/porid?idTarefa={idTarefa}&idAluno={idAluno}";
+        }
+
+        public static string SalvarRespostasDeTarefa() {
+            return EnderecoBase() + "resolucaoquestao/salvar";
+        }
+
         public static string Turmas(int idProfessor) {
             return EnderecoBase() + $"turma/listar?idProfessor={idProfessor}";
         }
 
         public static string EnviarTarefaTurma() {
             return EnderecoBase() + $"turma/SalvarTarefa";
+        }
+
+        public static string EnviarTarefaParaCorrecao() {
+            return EnderecoBase() + $"resolucaotarefa/LiberarParaCorrecao";
         }
     }
 }

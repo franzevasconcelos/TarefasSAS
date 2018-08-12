@@ -32,5 +32,15 @@ namespace TarefasSAS.API.Persistencia {
         public virtual void Salvar(Tarefa tarefa) {
             _session.SaveOrUpdate(tarefa);
         }
+
+        public IList<Tarefa> AResolver(int idAluno) {
+            Turma turma = null;
+            Aluno aluno = null;
+            return _session.QueryOver<Tarefa>()
+                           .JoinAlias(t => t.Turmas, () => turma)
+                           .JoinAlias(t => turma.Alunos, () => aluno)
+                           .Where(t => aluno.Id == idAluno)
+                           .List();
+        }
     }
 }

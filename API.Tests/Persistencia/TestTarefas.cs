@@ -111,5 +111,14 @@ namespace API.Tests.Persistencia {
             Assert.That(tarefa.Professor, Is.Not.Null);
             Assert.That(tarefa.Professor.Id, Is.EqualTo(1));
         }
+
+        [Test]
+        public void DeveBuscarTarefasAPartirDeUmAluno() {
+            var tarefas = new Tarefas(Sessao);
+
+            var lista = tarefas.AResolver(1);
+
+            Assert.That(lista.Count, Is.EqualTo(1));
+        }
     }
 }

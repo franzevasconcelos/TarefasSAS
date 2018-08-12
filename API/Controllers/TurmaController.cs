@@ -9,17 +9,20 @@ namespace TarefasSAS.API.Controllers {
     public class TurmaController : ApiController {
         private readonly Turmas _turmas;
         private readonly Tarefas _tarefas;
+        private readonly Resolucoes _resolucoes;
 
-        public TurmaController(Turmas turmas, Tarefas tarefas) {
+        public TurmaController(Turmas turmas, Tarefas tarefas, Resolucoes resolucoes) {
             _turmas = turmas;
             _tarefas = tarefas;
+            _resolucoes = resolucoes;
         }
 
-        public TurmaController() : this(new Turmas(NhibernateSetup.GetSession()), new Tarefas(NhibernateSetup.GetSession())) { }
+        public TurmaController() : this(new Turmas(NhibernateSetup.GetSession()),
+                                        new Tarefas(NhibernateSetup.GetSession()),
+                                        new Resolucoes(NhibernateSetup.GetSession())) { }
 
         [HttpGet]
         public IHttpActionResult Listar(int idProfessor) {
-
             var turmasEncontradas = _turmas.PorProfessor(idProfessor);
 
             var turmasMapeadas = Mapper.Map<List<Interface.Turma>>(turmasEncontradas);
@@ -36,8 +39,16 @@ namespace TarefasSAS.API.Controllers {
 
             turma.Tarefas.Add(tarefa);
             tarefa.Turmas.Add(turma);
-            
+
             _tarefas.Salvar(tarefa);
+
+            foreach (var aluno in turma.Alunos) {
+                _resolucoes.SalvarResolucaoTarefa(new ResolucaoTarefa {
+                                                                          Aluno = aluno,
+                                                                          Tarefa = tarefa,
+                                                                          Enviada = false
+                                                                      });
+            }
 
             return Ok();
         }

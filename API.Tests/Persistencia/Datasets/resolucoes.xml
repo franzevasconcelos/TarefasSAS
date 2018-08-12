@@ -63,18 +63,18 @@
     <tarefa_id>3</tarefa_id>
     <questao_id>4</questao_id>
   </TarefaQuestao>
-  
+
   <Usuario>
     <id>2</id>
     <login>2</login>
   </Usuario>
-  
+
   <Turma>
-   <id>1</id>
+    <id>1</id>
     <nome>turma</nome>
     <professor_id>1</professor_id>
   </Turma>
-  
+
   <TarefaTurma>
     <tarefa_id>1</tarefa_id>
     <turma_id>1</turma_id>
@@ -86,5 +86,12 @@
     <turma_id>1</turma_id>
     <usuario_id>2</usuario_id>
   </Aluno>
+
+  <ResolucaoTarefa>
+    <id>1</id>
+    <enviada>0</enviada>
+    <tarefa_id>3</tarefa_id>
+    <aluno_id>1</aluno_id>
+  </ResolucaoTarefa>
 
 </banco_dataset>

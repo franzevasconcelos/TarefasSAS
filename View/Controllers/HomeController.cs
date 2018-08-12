@@ -54,7 +54,7 @@ namespace View.Controllers {
             if (usuario.Tipo == "Professor")
                 return RedirectToAction("Index", "Professor");
 
-            return RedirectToAction("Aluno");
+            return RedirectToAction("Index", "Aluno");
         }
 
         public ActionResult Sair() {
@@ -64,12 +64,6 @@ namespace View.Controllers {
             Response.Cookies.Add(infoCookie);
 
             return RedirectToAction("Index");
-        }
-
-
-        [Authorize(Roles = "Aluno")]
-        public ActionResult Aluno() {
-            return View();
         }
     }
 }

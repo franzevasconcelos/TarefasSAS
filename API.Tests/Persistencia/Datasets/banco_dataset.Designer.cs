@@ -32,7 +32,9 @@ namespace API.Tests.Persistencia.Datasets {
         
         private QuestaoDataTable tableQuestao;
         
-        private ResolucaoDataTable tableResolucao;
+        private ResolucaoQuestaoDataTable tableResolucaoQuestao;
+        
+        private ResolucaoTarefaDataTable tableResolucaoTarefa;
         
         private TarefaDataTable tableTarefa;
         
@@ -50,11 +52,15 @@ namespace API.Tests.Persistencia.Datasets {
         
         private global::System.Data.DataRelation relationFK_Questao_professor_0;
         
-        private global::System.Data.DataRelation relationFK_Resolucao_aluno_0;
+        private global::System.Data.DataRelation relationFK_ResolucaoQuestao_aluno_0;
         
-        private global::System.Data.DataRelation relationFK_Resolucao_questao_1;
+        private global::System.Data.DataRelation relationFK_ResolucaoQuestao_questao_1;
         
-        private global::System.Data.DataRelation relationFK_Resolucao_tarefa_2;
+        private global::System.Data.DataRelation relationFK_ResolucaoQuestao_tarefa_2;
+        
+        private global::System.Data.DataRelation relationFK_ResolucaoTarefa_Aluno_0;
+        
+        private global::System.Data.DataRelation relationFK_ResolucaoTarefa_Tarefa_1;
         
         private global::System.Data.DataRelation relationFK_Tarefa_professor_0;
         
@@ -108,8 +114,11 @@ namespace API.Tests.Persistencia.Datasets {
                 if ((ds.Tables["Questao"] != null)) {
                     base.Tables.Add(new QuestaoDataTable(ds.Tables["Questao"]));
                 }
-                if ((ds.Tables["Resolucao"] != null)) {
-                    base.Tables.Add(new ResolucaoDataTable(ds.Tables["Resolucao"]));
+                if ((ds.Tables["ResolucaoQuestao"] != null)) {
+                    base.Tables.Add(new ResolucaoQuestaoDataTable(ds.Tables["ResolucaoQuestao"]));
+                }
+                if ((ds.Tables["ResolucaoTarefa"] != null)) {
+                    base.Tables.Add(new ResolucaoTarefaDataTable(ds.Tables["ResolucaoTarefa"]));
                 }
                 if ((ds.Tables["Tarefa"] != null)) {
                     base.Tables.Add(new TarefaDataTable(ds.Tables["Tarefa"]));
@@ -185,9 +194,19 @@ namespace API.Tests.Persistencia.Datasets {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public ResolucaoDataTable Resolucao {
+        public ResolucaoQuestaoDataTable ResolucaoQuestao {
             get {
-                return this.tableResolucao;
+                return this.tableResolucaoQuestao;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public ResolucaoTarefaDataTable ResolucaoTarefa {
+            get {
+                return this.tableResolucaoTarefa;
             }
         }
         
@@ -310,8 +329,11 @@ namespace API.Tests.Persistencia.Datasets {
                 if ((ds.Tables["Questao"] != null)) {
                     base.Tables.Add(new QuestaoDataTable(ds.Tables["Questao"]));
                 }
-                if ((ds.Tables["Resolucao"] != null)) {
-                    base.Tables.Add(new ResolucaoDataTable(ds.Tables["Resolucao"]));
+                if ((ds.Tables["ResolucaoQuestao"] != null)) {
+                    base.Tables.Add(new ResolucaoQuestaoDataTable(ds.Tables["ResolucaoQuestao"]));
+                }
+                if ((ds.Tables["ResolucaoTarefa"] != null)) {
+                    base.Tables.Add(new ResolucaoTarefaDataTable(ds.Tables["ResolucaoTarefa"]));
                 }
                 if ((ds.Tables["Tarefa"] != null)) {
                     base.Tables.Add(new TarefaDataTable(ds.Tables["Tarefa"]));
@@ -382,10 +404,16 @@ namespace API.Tests.Persistencia.Datasets {
                     this.tableQuestao.InitVars();
                 }
             }
-            this.tableResolucao = ((ResolucaoDataTable)(base.Tables["Resolucao"]));
+            this.tableResolucaoQuestao = ((ResolucaoQuestaoDataTable)(base.Tables["ResolucaoQuestao"]));
             if ((initTable == true)) {
-                if ((this.tableResolucao != null)) {
-                    this.tableResolucao.InitVars();
+                if ((this.tableResolucaoQuestao != null)) {
+                    this.tableResolucaoQuestao.InitVars();
+                }
+            }
+            this.tableResolucaoTarefa = ((ResolucaoTarefaDataTable)(base.Tables["ResolucaoTarefa"]));
+            if ((initTable == true)) {
+                if ((this.tableResolucaoTarefa != null)) {
+                    this.tableResolucaoTarefa.InitVars();
                 }
             }
             this.tableTarefa = ((TarefaDataTable)(base.Tables["Tarefa"]));
@@ -416,9 +444,11 @@ namespace API.Tests.Persistencia.Datasets {
             this.relationFK_Aluno_usuario_0 = this.Relations["FK_Aluno_usuario_0"];
             this.relationFK_Professor_usuario_0 = this.Relations["FK_Professor_usuario_0"];
             this.relationFK_Questao_professor_0 = this.Relations["FK_Questao_professor_0"];
-            this.relationFK_Resolucao_aluno_0 = this.Relations["FK_Resolucao_aluno_0"];
-            this.relationFK_Resolucao_questao_1 = this.Relations["FK_Resolucao_questao_1"];
-            this.relationFK_Resolucao_tarefa_2 = this.Relations["FK_Resolucao_tarefa_2"];
+            this.relationFK_ResolucaoQuestao_aluno_0 = this.Relations["FK_ResolucaoQuestao_aluno_0"];
+            this.relationFK_ResolucaoQuestao_questao_1 = this.Relations["FK_ResolucaoQuestao_questao_1"];
+            this.relationFK_ResolucaoQuestao_tarefa_2 = this.Relations["FK_ResolucaoQuestao_tarefa_2"];
+            this.relationFK_ResolucaoTarefa_Aluno_0 = this.Relations["FK_ResolucaoTarefa_Aluno_0"];
+            this.relationFK_ResolucaoTarefa_Tarefa_1 = this.Relations["FK_ResolucaoTarefa_Tarefa_1"];
             this.relationFK_Tarefa_professor_0 = this.Relations["FK_Tarefa_professor_0"];
             this.relationFK_TarefaQuestao_questao_0 = this.Relations["FK_TarefaQuestao_questao_0"];
             this.relationFK_TarefaQuestao_tarefa_1 = this.Relations["FK_TarefaQuestao_tarefa_1"];
@@ -443,8 +473,10 @@ namespace API.Tests.Persistencia.Datasets {
             base.Tables.Add(this.tableProfessor);
             this.tableQuestao = new QuestaoDataTable();
             base.Tables.Add(this.tableQuestao);
-            this.tableResolucao = new ResolucaoDataTable();
-            base.Tables.Add(this.tableResolucao);
+            this.tableResolucaoQuestao = new ResolucaoQuestaoDataTable();
+            base.Tables.Add(this.tableResolucaoQuestao);
+            this.tableResolucaoTarefa = new ResolucaoTarefaDataTable();
+            base.Tables.Add(this.tableResolucaoTarefa);
             this.tableTarefa = new TarefaDataTable();
             base.Tables.Add(this.tableTarefa);
             this.tableTarefaQuestao = new TarefaQuestaoDataTable();
@@ -469,18 +501,26 @@ namespace API.Tests.Persistencia.Datasets {
                         this.tableProfessor.idColumn}, new global::System.Data.DataColumn[] {
                         this.tableQuestao.professor_idColumn}, false);
             this.Relations.Add(this.relationFK_Questao_professor_0);
-            this.relationFK_Resolucao_aluno_0 = new global::System.Data.DataRelation("FK_Resolucao_aluno_0", new global::System.Data.DataColumn[] {
+            this.relationFK_ResolucaoQuestao_aluno_0 = new global::System.Data.DataRelation("FK_ResolucaoQuestao_aluno_0", new global::System.Data.DataColumn[] {
                         this.tableAluno.idColumn}, new global::System.Data.DataColumn[] {
-                        this.tableResolucao.aluno_idColumn}, false);
-            this.Relations.Add(this.relationFK_Resolucao_aluno_0);
-            this.relationFK_Resolucao_questao_1 = new global::System.Data.DataRelation("FK_Resolucao_questao_1", new global::System.Data.DataColumn[] {
+                        this.tableResolucaoQuestao.aluno_idColumn}, false);
+            this.Relations.Add(this.relationFK_ResolucaoQuestao_aluno_0);
+            this.relationFK_ResolucaoQuestao_questao_1 = new global::System.Data.DataRelation("FK_ResolucaoQuestao_questao_1", new global::System.Data.DataColumn[] {
                         this.tableQuestao.idColumn}, new global::System.Data.DataColumn[] {
-                        this.tableResolucao.questao_idColumn}, false);
-            this.Relations.Add(this.relationFK_Resolucao_questao_1);
-            this.relationFK_Resolucao_tarefa_2 = new global::System.Data.DataRelation("FK_Resolucao_tarefa_2", new global::System.Data.DataColumn[] {
+                        this.tableResolucaoQuestao.questao_idColumn}, false);
+            this.Relations.Add(this.relationFK_ResolucaoQuestao_questao_1);
+            this.relationFK_ResolucaoQuestao_tarefa_2 = new global::System.Data.DataRelation("FK_ResolucaoQuestao_tarefa_2", new global::System.Data.DataColumn[] {
                         this.tableTarefa.idColumn}, new global::System.Data.DataColumn[] {
-                        this.tableResolucao.tarefa_idColumn}, false);
-            this.Relations.Add(this.relationFK_Resolucao_tarefa_2);
+                        this.tableResolucaoQuestao.tarefa_idColumn}, false);
+            this.Relations.Add(this.relationFK_ResolucaoQuestao_tarefa_2);
+            this.relationFK_ResolucaoTarefa_Aluno_0 = new global::System.Data.DataRelation("FK_ResolucaoTarefa_Aluno_0", new global::System.Data.DataColumn[] {
+                        this.tableAluno.idColumn}, new global::System.Data.DataColumn[] {
+                        this.tableResolucaoTarefa.aluno_idColumn}, false);
+            this.Relations.Add(this.relationFK_ResolucaoTarefa_Aluno_0);
+            this.relationFK_ResolucaoTarefa_Tarefa_1 = new global::System.Data.DataRelation("FK_ResolucaoTarefa_Tarefa_1", new global::System.Data.DataColumn[] {
+                        this.tableTarefa.idColumn}, new global::System.Data.DataColumn[] {
+                        this.tableResolucaoTarefa.tarefa_idColumn}, false);
+            this.Relations.Add(this.relationFK_ResolucaoTarefa_Tarefa_1);
             this.relationFK_Tarefa_professor_0 = new global::System.Data.DataRelation("FK_Tarefa_professor_0", new global::System.Data.DataColumn[] {
                         this.tableProfessor.idColumn}, new global::System.Data.DataColumn[] {
                         this.tableTarefa.professor_idColumn}, false);
@@ -533,7 +573,13 @@ namespace API.Tests.Persistencia.Datasets {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private bool ShouldSerializeResolucao() {
+        private bool ShouldSerializeResolucaoQuestao() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private bool ShouldSerializeResolucaoTarefa() {
             return false;
         }
         
@@ -629,7 +675,10 @@ namespace API.Tests.Persistencia.Datasets {
         public delegate void QuestaoRowChangeEventHandler(object sender, QuestaoRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public delegate void ResolucaoRowChangeEventHandler(object sender, ResolucaoRowChangeEvent e);
+        public delegate void ResolucaoQuestaoRowChangeEventHandler(object sender, ResolucaoQuestaoRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public delegate void ResolucaoTarefaRowChangeEventHandler(object sender, ResolucaoTarefaRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public delegate void TarefaRowChangeEventHandler(object sender, TarefaRowChangeEvent e);
@@ -1839,17 +1888,13 @@ namespace API.Tests.Persistencia.Datasets {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class ResolucaoDataTable : global::System.Data.TypedTableBase<ResolucaoRow> {
+        public partial class ResolucaoQuestaoDataTable : global::System.Data.TypedTableBase<ResolucaoQuestaoRow> {
             
             private global::System.Data.DataColumn columnid;
             
             private global::System.Data.DataColumn columncomentario;
             
             private global::System.Data.DataColumn columnresposta;
-            
-            private global::System.Data.DataColumn columnnota;
-            
-            private global::System.Data.DataColumn columnenviada;
             
             private global::System.Data.DataColumn columntarefa_id;
             
@@ -1859,8 +1904,8 @@ namespace API.Tests.Persistencia.Datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ResolucaoDataTable() {
-                this.TableName = "Resolucao";
+            public ResolucaoQuestaoDataTable() {
+                this.TableName = "ResolucaoQuestao";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -1868,7 +1913,7 @@ namespace API.Tests.Persistencia.Datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal ResolucaoDataTable(global::System.Data.DataTable table) {
+            internal ResolucaoQuestaoDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -1885,7 +1930,7 @@ namespace API.Tests.Persistencia.Datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected ResolucaoDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected ResolucaoQuestaoDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -1911,22 +1956,6 @@ namespace API.Tests.Persistencia.Datasets {
             public global::System.Data.DataColumn respostaColumn {
                 get {
                     return this.columnresposta;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn notaColumn {
-                get {
-                    return this.columnnota;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn enviadaColumn {
-                get {
-                    return this.columnenviada;
                 }
             }
             
@@ -1965,68 +1994,66 @@ namespace API.Tests.Persistencia.Datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ResolucaoRow this[int index] {
+            public ResolucaoQuestaoRow this[int index] {
                 get {
-                    return ((ResolucaoRow)(this.Rows[index]));
+                    return ((ResolucaoQuestaoRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event ResolucaoRowChangeEventHandler ResolucaoRowChanging;
+            public event ResolucaoQuestaoRowChangeEventHandler ResolucaoQuestaoRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event ResolucaoRowChangeEventHandler ResolucaoRowChanged;
+            public event ResolucaoQuestaoRowChangeEventHandler ResolucaoQuestaoRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event ResolucaoRowChangeEventHandler ResolucaoRowDeleting;
+            public event ResolucaoQuestaoRowChangeEventHandler ResolucaoQuestaoRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event ResolucaoRowChangeEventHandler ResolucaoRowDeleted;
+            public event ResolucaoQuestaoRowChangeEventHandler ResolucaoQuestaoRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void AddResolucaoRow(ResolucaoRow row) {
+            public void AddResolucaoQuestaoRow(ResolucaoQuestaoRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ResolucaoRow AddResolucaoRow(long id, string comentario, string resposta, double nota, long enviada, TarefaRow parentTarefaRowByFK_Resolucao_tarefa_2, QuestaoRow parentQuestaoRowByFK_Resolucao_questao_1, AlunoRow parentAlunoRowByFK_Resolucao_aluno_0) {
-                ResolucaoRow rowResolucaoRow = ((ResolucaoRow)(this.NewRow()));
+            public ResolucaoQuestaoRow AddResolucaoQuestaoRow(long id, string comentario, string resposta, TarefaRow parentTarefaRowByFK_ResolucaoQuestao_tarefa_2, QuestaoRow parentQuestaoRowByFK_ResolucaoQuestao_questao_1, AlunoRow parentAlunoRowByFK_ResolucaoQuestao_aluno_0) {
+                ResolucaoQuestaoRow rowResolucaoQuestaoRow = ((ResolucaoQuestaoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         id,
                         comentario,
                         resposta,
-                        nota,
-                        enviada,
                         null,
                         null,
                         null};
-                if ((parentTarefaRowByFK_Resolucao_tarefa_2 != null)) {
-                    columnValuesArray[5] = parentTarefaRowByFK_Resolucao_tarefa_2[0];
+                if ((parentTarefaRowByFK_ResolucaoQuestao_tarefa_2 != null)) {
+                    columnValuesArray[3] = parentTarefaRowByFK_ResolucaoQuestao_tarefa_2[0];
                 }
-                if ((parentQuestaoRowByFK_Resolucao_questao_1 != null)) {
-                    columnValuesArray[6] = parentQuestaoRowByFK_Resolucao_questao_1[0];
+                if ((parentQuestaoRowByFK_ResolucaoQuestao_questao_1 != null)) {
+                    columnValuesArray[4] = parentQuestaoRowByFK_ResolucaoQuestao_questao_1[0];
                 }
-                if ((parentAlunoRowByFK_Resolucao_aluno_0 != null)) {
-                    columnValuesArray[7] = parentAlunoRowByFK_Resolucao_aluno_0[0];
+                if ((parentAlunoRowByFK_ResolucaoQuestao_aluno_0 != null)) {
+                    columnValuesArray[5] = parentAlunoRowByFK_ResolucaoQuestao_aluno_0[0];
                 }
-                rowResolucaoRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowResolucaoRow);
-                return rowResolucaoRow;
+                rowResolucaoQuestaoRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowResolucaoQuestaoRow);
+                return rowResolucaoQuestaoRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ResolucaoRow FindByid(long id) {
-                return ((ResolucaoRow)(this.Rows.Find(new object[] {
+            public ResolucaoQuestaoRow FindByid(long id) {
+                return ((ResolucaoQuestaoRow)(this.Rows.Find(new object[] {
                             id})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                ResolucaoDataTable cln = ((ResolucaoDataTable)(base.Clone()));
+                ResolucaoQuestaoDataTable cln = ((ResolucaoQuestaoDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -2034,7 +2061,7 @@ namespace API.Tests.Persistencia.Datasets {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new ResolucaoDataTable();
+                return new ResolucaoQuestaoDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2043,8 +2070,6 @@ namespace API.Tests.Persistencia.Datasets {
                 this.columnid = base.Columns["id"];
                 this.columncomentario = base.Columns["comentario"];
                 this.columnresposta = base.Columns["resposta"];
-                this.columnnota = base.Columns["nota"];
-                this.columnenviada = base.Columns["enviada"];
                 this.columntarefa_id = base.Columns["tarefa_id"];
                 this.columnquestao_id = base.Columns["questao_id"];
                 this.columnaluno_id = base.Columns["aluno_id"];
@@ -2059,10 +2084,6 @@ namespace API.Tests.Persistencia.Datasets {
                 base.Columns.Add(this.columncomentario);
                 this.columnresposta = new global::System.Data.DataColumn("resposta", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnresposta);
-                this.columnnota = new global::System.Data.DataColumn("nota", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnnota);
-                this.columnenviada = new global::System.Data.DataColumn("enviada", typeof(long), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnenviada);
                 this.columntarefa_id = new global::System.Data.DataColumn("tarefa_id", typeof(long), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntarefa_id);
                 this.columnquestao_id = new global::System.Data.DataColumn("questao_id", typeof(long), null, global::System.Data.MappingType.Element);
@@ -2073,10 +2094,7 @@ namespace API.Tests.Persistencia.Datasets {
                                 this.columnid}, true));
                 this.columnid.AllowDBNull = false;
                 this.columnid.Unique = true;
-                this.columncomentario.AllowDBNull = false;
                 this.columnresposta.AllowDBNull = false;
-                this.columnnota.AllowDBNull = false;
-                this.columnenviada.AllowDBNull = false;
                 this.columntarefa_id.AllowDBNull = false;
                 this.columnquestao_id.AllowDBNull = false;
                 this.columnaluno_id.AllowDBNull = false;
@@ -2084,28 +2102,28 @@ namespace API.Tests.Persistencia.Datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ResolucaoRow NewResolucaoRow() {
-                return ((ResolucaoRow)(this.NewRow()));
+            public ResolucaoQuestaoRow NewResolucaoQuestaoRow() {
+                return ((ResolucaoQuestaoRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new ResolucaoRow(builder);
+                return new ResolucaoQuestaoRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(ResolucaoRow);
+                return typeof(ResolucaoQuestaoRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.ResolucaoRowChanged != null)) {
-                    this.ResolucaoRowChanged(this, new ResolucaoRowChangeEvent(((ResolucaoRow)(e.Row)), e.Action));
+                if ((this.ResolucaoQuestaoRowChanged != null)) {
+                    this.ResolucaoQuestaoRowChanged(this, new ResolucaoQuestaoRowChangeEvent(((ResolucaoQuestaoRow)(e.Row)), e.Action));
                 }
             }
             
@@ -2113,8 +2131,8 @@ namespace API.Tests.Persistencia.Datasets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.ResolucaoRowChanging != null)) {
-                    this.ResolucaoRowChanging(this, new ResolucaoRowChangeEvent(((ResolucaoRow)(e.Row)), e.Action));
+                if ((this.ResolucaoQuestaoRowChanging != null)) {
+                    this.ResolucaoQuestaoRowChanging(this, new ResolucaoQuestaoRowChangeEvent(((ResolucaoQuestaoRow)(e.Row)), e.Action));
                 }
             }
             
@@ -2122,8 +2140,8 @@ namespace API.Tests.Persistencia.Datasets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.ResolucaoRowDeleted != null)) {
-                    this.ResolucaoRowDeleted(this, new ResolucaoRowChangeEvent(((ResolucaoRow)(e.Row)), e.Action));
+                if ((this.ResolucaoQuestaoRowDeleted != null)) {
+                    this.ResolucaoQuestaoRowDeleted(this, new ResolucaoQuestaoRowChangeEvent(((ResolucaoQuestaoRow)(e.Row)), e.Action));
                 }
             }
             
@@ -2131,14 +2149,14 @@ namespace API.Tests.Persistencia.Datasets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.ResolucaoRowDeleting != null)) {
-                    this.ResolucaoRowDeleting(this, new ResolucaoRowChangeEvent(((ResolucaoRow)(e.Row)), e.Action));
+                if ((this.ResolucaoQuestaoRowDeleting != null)) {
+                    this.ResolucaoQuestaoRowDeleting(this, new ResolucaoQuestaoRowChangeEvent(((ResolucaoQuestaoRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void RemoveResolucaoRow(ResolucaoRow row) {
+            public void RemoveResolucaoQuestaoRow(ResolucaoQuestaoRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -2165,7 +2183,329 @@ namespace API.Tests.Persistencia.Datasets {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "ResolucaoDataTable";
+                attribute2.FixedValue = "ResolucaoQuestaoDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class ResolucaoTarefaDataTable : global::System.Data.TypedTableBase<ResolucaoTarefaRow> {
+            
+            private global::System.Data.DataColumn columnid;
+            
+            private global::System.Data.DataColumn columnnota;
+            
+            private global::System.Data.DataColumn columnenviada;
+            
+            private global::System.Data.DataColumn columntarefa_id;
+            
+            private global::System.Data.DataColumn columnaluno_id;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ResolucaoTarefaDataTable() {
+                this.TableName = "ResolucaoTarefa";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal ResolucaoTarefaDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected ResolucaoTarefaDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn idColumn {
+                get {
+                    return this.columnid;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn notaColumn {
+                get {
+                    return this.columnnota;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn enviadaColumn {
+                get {
+                    return this.columnenviada;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn tarefa_idColumn {
+                get {
+                    return this.columntarefa_id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn aluno_idColumn {
+                get {
+                    return this.columnaluno_id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ResolucaoTarefaRow this[int index] {
+                get {
+                    return ((ResolucaoTarefaRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event ResolucaoTarefaRowChangeEventHandler ResolucaoTarefaRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event ResolucaoTarefaRowChangeEventHandler ResolucaoTarefaRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event ResolucaoTarefaRowChangeEventHandler ResolucaoTarefaRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event ResolucaoTarefaRowChangeEventHandler ResolucaoTarefaRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void AddResolucaoTarefaRow(ResolucaoTarefaRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ResolucaoTarefaRow AddResolucaoTarefaRow(long id, double nota, long enviada, TarefaRow parentTarefaRowByFK_ResolucaoTarefa_Tarefa_1, AlunoRow parentAlunoRowByFK_ResolucaoTarefa_Aluno_0) {
+                ResolucaoTarefaRow rowResolucaoTarefaRow = ((ResolucaoTarefaRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        id,
+                        nota,
+                        enviada,
+                        null,
+                        null};
+                if ((parentTarefaRowByFK_ResolucaoTarefa_Tarefa_1 != null)) {
+                    columnValuesArray[3] = parentTarefaRowByFK_ResolucaoTarefa_Tarefa_1[0];
+                }
+                if ((parentAlunoRowByFK_ResolucaoTarefa_Aluno_0 != null)) {
+                    columnValuesArray[4] = parentAlunoRowByFK_ResolucaoTarefa_Aluno_0[0];
+                }
+                rowResolucaoTarefaRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowResolucaoTarefaRow);
+                return rowResolucaoTarefaRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ResolucaoTarefaRow FindByid(long id) {
+                return ((ResolucaoTarefaRow)(this.Rows.Find(new object[] {
+                            id})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                ResolucaoTarefaDataTable cln = ((ResolucaoTarefaDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new ResolucaoTarefaDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal void InitVars() {
+                this.columnid = base.Columns["id"];
+                this.columnnota = base.Columns["nota"];
+                this.columnenviada = base.Columns["enviada"];
+                this.columntarefa_id = base.Columns["tarefa_id"];
+                this.columnaluno_id = base.Columns["aluno_id"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            private void InitClass() {
+                this.columnid = new global::System.Data.DataColumn("id", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnid);
+                this.columnnota = new global::System.Data.DataColumn("nota", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnota);
+                this.columnenviada = new global::System.Data.DataColumn("enviada", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnenviada);
+                this.columntarefa_id = new global::System.Data.DataColumn("tarefa_id", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntarefa_id);
+                this.columnaluno_id = new global::System.Data.DataColumn("aluno_id", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnaluno_id);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnid}, true));
+                this.columnid.AllowDBNull = false;
+                this.columnid.Unique = true;
+                this.columntarefa_id.AllowDBNull = false;
+                this.columnaluno_id.AllowDBNull = false;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ResolucaoTarefaRow NewResolucaoTarefaRow() {
+                return ((ResolucaoTarefaRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new ResolucaoTarefaRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(ResolucaoTarefaRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.ResolucaoTarefaRowChanged != null)) {
+                    this.ResolucaoTarefaRowChanged(this, new ResolucaoTarefaRowChangeEvent(((ResolucaoTarefaRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.ResolucaoTarefaRowChanging != null)) {
+                    this.ResolucaoTarefaRowChanging(this, new ResolucaoTarefaRowChangeEvent(((ResolucaoTarefaRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.ResolucaoTarefaRowDeleted != null)) {
+                    this.ResolucaoTarefaRowDeleted(this, new ResolucaoTarefaRowChangeEvent(((ResolucaoTarefaRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.ResolucaoTarefaRowDeleting != null)) {
+                    this.ResolucaoTarefaRowDeleting(this, new ResolucaoTarefaRowChangeEvent(((ResolucaoTarefaRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void RemoveResolucaoTarefaRow(ResolucaoTarefaRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                banco_dataset ds = new banco_dataset();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "ResolucaoTarefaDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -3466,12 +3806,23 @@ namespace API.Tests.Persistencia.Datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ResolucaoRow[] GetResolucaoRows() {
-                if ((this.Table.ChildRelations["FK_Resolucao_aluno_0"] == null)) {
-                    return new ResolucaoRow[0];
+            public ResolucaoQuestaoRow[] GetResolucaoQuestaoRows() {
+                if ((this.Table.ChildRelations["FK_ResolucaoQuestao_aluno_0"] == null)) {
+                    return new ResolucaoQuestaoRow[0];
                 }
                 else {
-                    return ((ResolucaoRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Resolucao_aluno_0"])));
+                    return ((ResolucaoQuestaoRow[])(base.GetChildRows(this.Table.ChildRelations["FK_ResolucaoQuestao_aluno_0"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ResolucaoTarefaRow[] GetResolucaoTarefaRows() {
+                if ((this.Table.ChildRelations["FK_ResolucaoTarefa_Aluno_0"] == null)) {
+                    return new ResolucaoTarefaRow[0];
+                }
+                else {
+                    return ((ResolucaoTarefaRow[])(base.GetChildRows(this.Table.ChildRelations["FK_ResolucaoTarefa_Aluno_0"])));
                 }
             }
         }
@@ -3687,12 +4038,12 @@ namespace API.Tests.Persistencia.Datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ResolucaoRow[] GetResolucaoRows() {
-                if ((this.Table.ChildRelations["FK_Resolucao_questao_1"] == null)) {
-                    return new ResolucaoRow[0];
+            public ResolucaoQuestaoRow[] GetResolucaoQuestaoRows() {
+                if ((this.Table.ChildRelations["FK_ResolucaoQuestao_questao_1"] == null)) {
+                    return new ResolucaoQuestaoRow[0];
                 }
                 else {
-                    return ((ResolucaoRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Resolucao_questao_1"])));
+                    return ((ResolucaoQuestaoRow[])(base.GetChildRows(this.Table.ChildRelations["FK_ResolucaoQuestao_questao_1"])));
                 }
             }
             
@@ -3711,25 +4062,25 @@ namespace API.Tests.Persistencia.Datasets {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class ResolucaoRow : global::System.Data.DataRow {
+        public partial class ResolucaoQuestaoRow : global::System.Data.DataRow {
             
-            private ResolucaoDataTable tableResolucao;
+            private ResolucaoQuestaoDataTable tableResolucaoQuestao;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal ResolucaoRow(global::System.Data.DataRowBuilder rb) : 
+            internal ResolucaoQuestaoRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableResolucao = ((ResolucaoDataTable)(this.Table));
+                this.tableResolucaoQuestao = ((ResolucaoQuestaoDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public long id {
                 get {
-                    return ((long)(this[this.tableResolucao.idColumn]));
+                    return ((long)(this[this.tableResolucaoQuestao.idColumn]));
                 }
                 set {
-                    this[this.tableResolucao.idColumn] = value;
+                    this[this.tableResolucaoQuestao.idColumn] = value;
                 }
             }
             
@@ -3737,10 +4088,15 @@ namespace API.Tests.Persistencia.Datasets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string comentario {
                 get {
-                    return ((string)(this[this.tableResolucao.comentarioColumn]));
+                    try {
+                        return ((string)(this[this.tableResolucaoQuestao.comentarioColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'comentario\' in table \'ResolucaoQuestao\' is DBNull.", e);
+                    }
                 }
                 set {
-                    this[this.tableResolucao.comentarioColumn] = value;
+                    this[this.tableResolucaoQuestao.comentarioColumn] = value;
                 }
             }
             
@@ -3748,32 +4104,10 @@ namespace API.Tests.Persistencia.Datasets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string resposta {
                 get {
-                    return ((string)(this[this.tableResolucao.respostaColumn]));
+                    return ((string)(this[this.tableResolucaoQuestao.respostaColumn]));
                 }
                 set {
-                    this[this.tableResolucao.respostaColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public double nota {
-                get {
-                    return ((double)(this[this.tableResolucao.notaColumn]));
-                }
-                set {
-                    this[this.tableResolucao.notaColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public long enviada {
-                get {
-                    return ((long)(this[this.tableResolucao.enviadaColumn]));
-                }
-                set {
-                    this[this.tableResolucao.enviadaColumn] = value;
+                    this[this.tableResolucaoQuestao.respostaColumn] = value;
                 }
             }
             
@@ -3781,10 +4115,10 @@ namespace API.Tests.Persistencia.Datasets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public long tarefa_id {
                 get {
-                    return ((long)(this[this.tableResolucao.tarefa_idColumn]));
+                    return ((long)(this[this.tableResolucaoQuestao.tarefa_idColumn]));
                 }
                 set {
-                    this[this.tableResolucao.tarefa_idColumn] = value;
+                    this[this.tableResolucaoQuestao.tarefa_idColumn] = value;
                 }
             }
             
@@ -3792,10 +4126,10 @@ namespace API.Tests.Persistencia.Datasets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public long questao_id {
                 get {
-                    return ((long)(this[this.tableResolucao.questao_idColumn]));
+                    return ((long)(this[this.tableResolucaoQuestao.questao_idColumn]));
                 }
                 set {
-                    this[this.tableResolucao.questao_idColumn] = value;
+                    this[this.tableResolucaoQuestao.questao_idColumn] = value;
                 }
             }
             
@@ -3803,10 +4137,10 @@ namespace API.Tests.Persistencia.Datasets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public long aluno_id {
                 get {
-                    return ((long)(this[this.tableResolucao.aluno_idColumn]));
+                    return ((long)(this[this.tableResolucaoQuestao.aluno_idColumn]));
                 }
                 set {
-                    this[this.tableResolucao.aluno_idColumn] = value;
+                    this[this.tableResolucaoQuestao.aluno_idColumn] = value;
                 }
             }
             
@@ -3814,10 +4148,10 @@ namespace API.Tests.Persistencia.Datasets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public AlunoRow AlunoRow {
                 get {
-                    return ((AlunoRow)(this.GetParentRow(this.Table.ParentRelations["FK_Resolucao_aluno_0"])));
+                    return ((AlunoRow)(this.GetParentRow(this.Table.ParentRelations["FK_ResolucaoQuestao_aluno_0"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Resolucao_aluno_0"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_ResolucaoQuestao_aluno_0"]);
                 }
             }
             
@@ -3825,10 +4159,10 @@ namespace API.Tests.Persistencia.Datasets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public QuestaoRow QuestaoRow {
                 get {
-                    return ((QuestaoRow)(this.GetParentRow(this.Table.ParentRelations["FK_Resolucao_questao_1"])));
+                    return ((QuestaoRow)(this.GetParentRow(this.Table.ParentRelations["FK_ResolucaoQuestao_questao_1"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Resolucao_questao_1"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_ResolucaoQuestao_questao_1"]);
                 }
             }
             
@@ -3836,11 +4170,149 @@ namespace API.Tests.Persistencia.Datasets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public TarefaRow TarefaRow {
                 get {
-                    return ((TarefaRow)(this.GetParentRow(this.Table.ParentRelations["FK_Resolucao_tarefa_2"])));
+                    return ((TarefaRow)(this.GetParentRow(this.Table.ParentRelations["FK_ResolucaoQuestao_tarefa_2"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Resolucao_tarefa_2"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_ResolucaoQuestao_tarefa_2"]);
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IscomentarioNull() {
+                return this.IsNull(this.tableResolucaoQuestao.comentarioColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetcomentarioNull() {
+                this[this.tableResolucaoQuestao.comentarioColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class ResolucaoTarefaRow : global::System.Data.DataRow {
+            
+            private ResolucaoTarefaDataTable tableResolucaoTarefa;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal ResolucaoTarefaRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableResolucaoTarefa = ((ResolucaoTarefaDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public long id {
+                get {
+                    return ((long)(this[this.tableResolucaoTarefa.idColumn]));
+                }
+                set {
+                    this[this.tableResolucaoTarefa.idColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public double nota {
+                get {
+                    try {
+                        return ((double)(this[this.tableResolucaoTarefa.notaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'nota\' in table \'ResolucaoTarefa\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableResolucaoTarefa.notaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public long enviada {
+                get {
+                    try {
+                        return ((long)(this[this.tableResolucaoTarefa.enviadaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'enviada\' in table \'ResolucaoTarefa\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableResolucaoTarefa.enviadaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public long tarefa_id {
+                get {
+                    return ((long)(this[this.tableResolucaoTarefa.tarefa_idColumn]));
+                }
+                set {
+                    this[this.tableResolucaoTarefa.tarefa_idColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public long aluno_id {
+                get {
+                    return ((long)(this[this.tableResolucaoTarefa.aluno_idColumn]));
+                }
+                set {
+                    this[this.tableResolucaoTarefa.aluno_idColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public AlunoRow AlunoRow {
+                get {
+                    return ((AlunoRow)(this.GetParentRow(this.Table.ParentRelations["FK_ResolucaoTarefa_Aluno_0"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_ResolucaoTarefa_Aluno_0"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public TarefaRow TarefaRow {
+                get {
+                    return ((TarefaRow)(this.GetParentRow(this.Table.ParentRelations["FK_ResolucaoTarefa_Tarefa_1"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_ResolucaoTarefa_Tarefa_1"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsnotaNull() {
+                return this.IsNull(this.tableResolucaoTarefa.notaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetnotaNull() {
+                this[this.tableResolucaoTarefa.notaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsenviadaNull() {
+                return this.IsNull(this.tableResolucaoTarefa.enviadaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetenviadaNull() {
+                this[this.tableResolucaoTarefa.enviadaColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -3893,12 +4365,23 @@ namespace API.Tests.Persistencia.Datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ResolucaoRow[] GetResolucaoRows() {
-                if ((this.Table.ChildRelations["FK_Resolucao_tarefa_2"] == null)) {
-                    return new ResolucaoRow[0];
+            public ResolucaoQuestaoRow[] GetResolucaoQuestaoRows() {
+                if ((this.Table.ChildRelations["FK_ResolucaoQuestao_tarefa_2"] == null)) {
+                    return new ResolucaoQuestaoRow[0];
                 }
                 else {
-                    return ((ResolucaoRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Resolucao_tarefa_2"])));
+                    return ((ResolucaoQuestaoRow[])(base.GetChildRows(this.Table.ChildRelations["FK_ResolucaoQuestao_tarefa_2"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ResolucaoTarefaRow[] GetResolucaoTarefaRows() {
+                if ((this.Table.ChildRelations["FK_ResolucaoTarefa_Tarefa_1"] == null)) {
+                    return new ResolucaoTarefaRow[0];
+                }
+                else {
+                    return ((ResolucaoTarefaRow[])(base.GetChildRows(this.Table.ChildRelations["FK_ResolucaoTarefa_Tarefa_1"])));
                 }
             }
             
@@ -4264,22 +4747,56 @@ namespace API.Tests.Persistencia.Datasets {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public class ResolucaoRowChangeEvent : global::System.EventArgs {
+        public class ResolucaoQuestaoRowChangeEvent : global::System.EventArgs {
             
-            private ResolucaoRow eventRow;
+            private ResolucaoQuestaoRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ResolucaoRowChangeEvent(ResolucaoRow row, global::System.Data.DataRowAction action) {
+            public ResolucaoQuestaoRowChangeEvent(ResolucaoQuestaoRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ResolucaoRow Row {
+            public ResolucaoQuestaoRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public class ResolucaoTarefaRowChangeEvent : global::System.EventArgs {
+            
+            private ResolucaoTarefaRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ResolucaoTarefaRowChangeEvent(ResolucaoTarefaRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ResolucaoTarefaRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -6238,7 +6755,7 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class ResolucaoTableAdapter : global::System.ComponentModel.Component {
+    public partial class ResolucaoQuestaoTableAdapter : global::System.ComponentModel.Component {
         
         private global::Devart.Data.SQLite.SQLiteDataAdapter _adapter;
         
@@ -6252,7 +6769,7 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public ResolucaoTableAdapter() {
+        public ResolucaoQuestaoTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -6349,19 +6866,17 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
             this._adapter = new global::Devart.Data.SQLite.SQLiteDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "Resolucao";
+            tableMapping.DataSetTable = "ResolucaoQuestao";
             tableMapping.ColumnMappings.Add("id", "id");
             tableMapping.ColumnMappings.Add("comentario", "comentario");
             tableMapping.ColumnMappings.Add("resposta", "resposta");
-            tableMapping.ColumnMappings.Add("nota", "nota");
-            tableMapping.ColumnMappings.Add("enviada", "enviada");
             tableMapping.ColumnMappings.Add("tarefa_id", "tarefa_id");
             tableMapping.ColumnMappings.Add("questao_id", "questao_id");
             tableMapping.ColumnMappings.Add("aluno_id", "aluno_id");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::Devart.Data.SQLite.SQLiteCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM ""main"".""Resolucao"" WHERE ((""id"" = :Original_id) AND (""comentario"" = :Original_comentario) AND (""resposta"" = :Original_resposta) AND (""nota"" = :Original_nota) AND (""enviada"" = :Original_enviada) AND (""tarefa_id"" = :Original_tarefa_id) AND (""questao_id"" = :Original_questao_id) AND (""aluno_id"" = :Original_aluno_id))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM ""main"".""ResolucaoQuestao"" WHERE ((""id"" = :Original_id) AND ((:IsNull_comentario = 1 AND ""comentario"" IS NULL) OR (""comentario"" = :Original_comentario)) AND (""resposta"" = :Original_resposta) AND (""tarefa_id"" = :Original_tarefa_id) AND (""questao_id"" = :Original_questao_id) AND (""aluno_id"" = :Original_aluno_id))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::Devart.Data.SQLite.SQLiteParameter param = new global::Devart.Data.SQLite.SQLiteParameter();
             param.ParameterName = "Original_id";
@@ -6370,6 +6885,15 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
             param.IsNullable = true;
             param.SourceColumn = "id";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "IsNull_comentario";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "comentario";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
             param.ParameterName = "Original_comentario";
@@ -6383,22 +6907,6 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
             param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
             param.IsNullable = true;
             param.SourceColumn = "resposta";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Original_nota";
-            param.DbType = global::System.Data.DbType.Double;
-            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
-            param.IsNullable = true;
-            param.SourceColumn = "nota";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Original_enviada";
-            param.DbType = global::System.Data.DbType.Int64;
-            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
-            param.IsNullable = true;
-            param.SourceColumn = "enviada";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
@@ -6427,9 +6935,9 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::Devart.Data.SQLite.SQLiteCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO \"main\".\"Resolucao\" (\"id\", \"comentario\", \"resposta\", \"nota\", \"enviada\"" +
-                ", \"tarefa_id\", \"questao_id\", \"aluno_id\") VALUES (:id, :comentario, :resposta, :n" +
-                "ota, :enviada, :tarefa_id, :questao_id, :aluno_id)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO \"main\".\"ResolucaoQuestao\" (\"id\", \"comentario\", \"resposta\", \"tarefa_id" +
+                "\", \"questao_id\", \"aluno_id\") VALUES (:id, :comentario, :resposta, :tarefa_id, :q" +
+                "uestao_id, :aluno_id)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Devart.Data.SQLite.SQLiteParameter();
             param.ParameterName = "id";
@@ -6449,20 +6957,6 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
             param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
             param.IsNullable = true;
             param.SourceColumn = "resposta";
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "nota";
-            param.DbType = global::System.Data.DbType.Double;
-            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
-            param.IsNullable = true;
-            param.SourceColumn = "nota";
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "enviada";
-            param.DbType = global::System.Data.DbType.Int64;
-            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
-            param.IsNullable = true;
-            param.SourceColumn = "enviada";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
             param.ParameterName = "tarefa_id";
@@ -6487,7 +6981,7 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::Devart.Data.SQLite.SQLiteCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE ""main"".""Resolucao"" SET ""id"" = :id, ""comentario"" = :comentario, ""resposta"" = :resposta, ""nota"" = :nota, ""enviada"" = :enviada, ""tarefa_id"" = :tarefa_id, ""questao_id"" = :questao_id, ""aluno_id"" = :aluno_id WHERE ((""id"" = :Original_id) AND (""comentario"" = :Original_comentario) AND (""resposta"" = :Original_resposta) AND (""nota"" = :Original_nota) AND (""enviada"" = :Original_enviada) AND (""tarefa_id"" = :Original_tarefa_id) AND (""questao_id"" = :Original_questao_id) AND (""aluno_id"" = :Original_aluno_id))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE ""main"".""ResolucaoQuestao"" SET ""id"" = :id, ""comentario"" = :comentario, ""resposta"" = :resposta, ""tarefa_id"" = :tarefa_id, ""questao_id"" = :questao_id, ""aluno_id"" = :aluno_id WHERE ((""id"" = :Original_id) AND ((:IsNull_comentario = 1 AND ""comentario"" IS NULL) OR (""comentario"" = :Original_comentario)) AND (""resposta"" = :Original_resposta) AND (""tarefa_id"" = :Original_tarefa_id) AND (""questao_id"" = :Original_questao_id) AND (""aluno_id"" = :Original_aluno_id))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Devart.Data.SQLite.SQLiteParameter();
             param.ParameterName = "id";
@@ -6507,20 +7001,6 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
             param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
             param.IsNullable = true;
             param.SourceColumn = "resposta";
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "nota";
-            param.DbType = global::System.Data.DbType.Double;
-            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
-            param.IsNullable = true;
-            param.SourceColumn = "nota";
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "enviada";
-            param.DbType = global::System.Data.DbType.Int64;
-            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
-            param.IsNullable = true;
-            param.SourceColumn = "enviada";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
             param.ParameterName = "tarefa_id";
@@ -6552,6 +7032,15 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "IsNull_comentario";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "comentario";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
             param.ParameterName = "Original_comentario";
             param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
             param.IsNullable = true;
@@ -6563,22 +7052,6 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
             param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
             param.IsNullable = true;
             param.SourceColumn = "resposta";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Original_nota";
-            param.DbType = global::System.Data.DbType.Double;
-            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
-            param.IsNullable = true;
-            param.SourceColumn = "nota";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Original_enviada";
-            param.DbType = global::System.Data.DbType.Int64;
-            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
-            param.IsNullable = true;
-            param.SourceColumn = "enviada";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
@@ -6620,8 +7093,8 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
             this._commandCollection = new global::Devart.Data.SQLite.SQLiteCommand[1];
             this._commandCollection[0] = new global::Devart.Data.SQLite.SQLiteCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT id, comentario, resposta, nota, enviada, tarefa_id, questao_id, aluno_id F" +
-                "ROM \"main\".Resolucao";
+            this._commandCollection[0].CommandText = "SELECT id, comentario, resposta, tarefa_id, questao_id, aluno_id FROM \"main\".Reso" +
+                "lucaoQuestao";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -6629,7 +7102,7 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(banco_dataset.ResolucaoDataTable dataTable) {
+        public virtual int Fill(banco_dataset.ResolucaoQuestaoDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -6642,9 +7115,9 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual banco_dataset.ResolucaoDataTable GetData() {
+        public virtual banco_dataset.ResolucaoQuestaoDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            banco_dataset.ResolucaoDataTable dataTable = new banco_dataset.ResolucaoDataTable();
+            banco_dataset.ResolucaoQuestaoDataTable dataTable = new banco_dataset.ResolucaoQuestaoDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -6652,7 +7125,7 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(banco_dataset.ResolucaoDataTable dataTable) {
+        public virtual int Update(banco_dataset.ResolucaoQuestaoDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
@@ -6660,7 +7133,7 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(banco_dataset dataSet) {
-            return this.Adapter.Update(dataSet, "Resolucao");
+            return this.Adapter.Update(dataSet, "ResolucaoQuestao");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6682,25 +7155,25 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(long Original_id, string Original_comentario, string Original_resposta, double Original_nota, long Original_enviada, long Original_tarefa_id, long Original_questao_id, long Original_aluno_id) {
+        public virtual int Delete(long Original_id, string Original_comentario, string Original_resposta, long Original_tarefa_id, long Original_questao_id, long Original_aluno_id) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((long)(Original_id));
             if ((Original_comentario == null)) {
-                throw new global::System.ArgumentNullException("Original_comentario");
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_comentario));
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_comentario));
             }
             if ((Original_resposta == null)) {
                 throw new global::System.ArgumentNullException("Original_resposta");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_resposta));
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Original_resposta));
             }
-            this.Adapter.DeleteCommand.Parameters[3].Value = ((double)(Original_nota));
-            this.Adapter.DeleteCommand.Parameters[4].Value = ((long)(Original_enviada));
-            this.Adapter.DeleteCommand.Parameters[5].Value = ((long)(Original_tarefa_id));
-            this.Adapter.DeleteCommand.Parameters[6].Value = ((long)(Original_questao_id));
-            this.Adapter.DeleteCommand.Parameters[7].Value = ((long)(Original_aluno_id));
+            this.Adapter.DeleteCommand.Parameters[4].Value = ((long)(Original_tarefa_id));
+            this.Adapter.DeleteCommand.Parameters[5].Value = ((long)(Original_questao_id));
+            this.Adapter.DeleteCommand.Parameters[6].Value = ((long)(Original_aluno_id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -6721,10 +7194,10 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(long id, string comentario, string resposta, double nota, long enviada, long tarefa_id, long questao_id, long aluno_id) {
+        public virtual int Insert(long id, string comentario, string resposta, long tarefa_id, long questao_id, long aluno_id) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((long)(id));
             if ((comentario == null)) {
-                throw new global::System.ArgumentNullException("comentario");
+                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.InsertCommand.Parameters[1].Value = ((string)(comentario));
@@ -6735,11 +7208,9 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
             else {
                 this.Adapter.InsertCommand.Parameters[2].Value = ((string)(resposta));
             }
-            this.Adapter.InsertCommand.Parameters[3].Value = ((double)(nota));
-            this.Adapter.InsertCommand.Parameters[4].Value = ((long)(enviada));
-            this.Adapter.InsertCommand.Parameters[5].Value = ((long)(tarefa_id));
-            this.Adapter.InsertCommand.Parameters[6].Value = ((long)(questao_id));
-            this.Adapter.InsertCommand.Parameters[7].Value = ((long)(aluno_id));
+            this.Adapter.InsertCommand.Parameters[3].Value = ((long)(tarefa_id));
+            this.Adapter.InsertCommand.Parameters[4].Value = ((long)(questao_id));
+            this.Adapter.InsertCommand.Parameters[5].Value = ((long)(aluno_id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -6760,26 +7231,10 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(
-                    long id, 
-                    string comentario, 
-                    string resposta, 
-                    double nota, 
-                    long enviada, 
-                    long tarefa_id, 
-                    long questao_id, 
-                    long aluno_id, 
-                    long Original_id, 
-                    string Original_comentario, 
-                    string Original_resposta, 
-                    double Original_nota, 
-                    long Original_enviada, 
-                    long Original_tarefa_id, 
-                    long Original_questao_id, 
-                    long Original_aluno_id) {
+        public virtual int Update(long id, string comentario, string resposta, long tarefa_id, long questao_id, long aluno_id, long Original_id, string Original_comentario, string Original_resposta, long Original_tarefa_id, long Original_questao_id, long Original_aluno_id) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((long)(id));
             if ((comentario == null)) {
-                throw new global::System.ArgumentNullException("comentario");
+                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(comentario));
@@ -6790,29 +7245,27 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(resposta));
             }
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((double)(nota));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((long)(enviada));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((long)(tarefa_id));
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((long)(questao_id));
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((long)(aluno_id));
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((long)(Original_id));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((long)(tarefa_id));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((long)(questao_id));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((long)(aluno_id));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((long)(Original_id));
             if ((Original_comentario == null)) {
-                throw new global::System.ArgumentNullException("Original_comentario");
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_comentario));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_comentario));
             }
             if ((Original_resposta == null)) {
                 throw new global::System.ArgumentNullException("Original_resposta");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_resposta));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_resposta));
             }
-            this.Adapter.UpdateCommand.Parameters[11].Value = ((double)(Original_nota));
-            this.Adapter.UpdateCommand.Parameters[12].Value = ((long)(Original_enviada));
-            this.Adapter.UpdateCommand.Parameters[13].Value = ((long)(Original_tarefa_id));
-            this.Adapter.UpdateCommand.Parameters[14].Value = ((long)(Original_questao_id));
-            this.Adapter.UpdateCommand.Parameters[15].Value = ((long)(Original_aluno_id));
+            this.Adapter.UpdateCommand.Parameters[10].Value = ((long)(Original_tarefa_id));
+            this.Adapter.UpdateCommand.Parameters[11].Value = ((long)(Original_questao_id));
+            this.Adapter.UpdateCommand.Parameters[12].Value = ((long)(Original_aluno_id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -6833,8 +7286,546 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string comentario, string resposta, double nota, long enviada, long tarefa_id, long questao_id, long aluno_id, long Original_id, string Original_comentario, string Original_resposta, double Original_nota, long Original_enviada, long Original_tarefa_id, long Original_questao_id, long Original_aluno_id) {
-            return this.Update(Original_id, comentario, resposta, nota, enviada, tarefa_id, questao_id, aluno_id, Original_id, Original_comentario, Original_resposta, Original_nota, Original_enviada, Original_tarefa_id, Original_questao_id, Original_aluno_id);
+        public virtual int Update(string comentario, string resposta, long tarefa_id, long questao_id, long aluno_id, long Original_id, string Original_comentario, string Original_resposta, long Original_tarefa_id, long Original_questao_id, long Original_aluno_id) {
+            return this.Update(Original_id, comentario, resposta, tarefa_id, questao_id, aluno_id, Original_id, Original_comentario, Original_resposta, Original_tarefa_id, Original_questao_id, Original_aluno_id);
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class ResolucaoTarefaTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::Devart.Data.SQLite.SQLiteDataAdapter _adapter;
+        
+        private global::Devart.Data.SQLite.SQLiteConnection _connection;
+        
+        private global::System.Data.Common.DbTransaction _transaction;
+        
+        private global::Devart.Data.SQLite.SQLiteCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public ResolucaoTarefaTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        protected internal global::Devart.Data.SQLite.SQLiteDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        internal global::Devart.Data.SQLite.SQLiteConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::Devart.Data.SQLite.SQLiteCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        internal global::System.Data.Common.DbTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        protected global::Devart.Data.SQLite.SQLiteCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::Devart.Data.SQLite.SQLiteDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "ResolucaoTarefa";
+            tableMapping.ColumnMappings.Add("id", "id");
+            tableMapping.ColumnMappings.Add("nota", "nota");
+            tableMapping.ColumnMappings.Add("enviada", "enviada");
+            tableMapping.ColumnMappings.Add("tarefa_id", "tarefa_id");
+            tableMapping.ColumnMappings.Add("aluno_id", "aluno_id");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::Devart.Data.SQLite.SQLiteCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM ""main"".""ResolucaoTarefa"" WHERE ((""id"" = :Original_id) AND ((:IsNull_nota = 1 AND ""nota"" IS NULL) OR (""nota"" = :Original_nota)) AND ((:IsNull_enviada = 1 AND ""enviada"" IS NULL) OR (""enviada"" = :Original_enviada)) AND (""tarefa_id"" = :Original_tarefa_id) AND (""aluno_id"" = :Original_aluno_id))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            global::Devart.Data.SQLite.SQLiteParameter param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Original_id";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
+            param.IsNullable = true;
+            param.SourceColumn = "id";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "IsNull_nota";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "nota";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Original_nota";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
+            param.IsNullable = true;
+            param.SourceColumn = "nota";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "IsNull_enviada";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "enviada";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Original_enviada";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
+            param.IsNullable = true;
+            param.SourceColumn = "enviada";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Original_tarefa_id";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
+            param.IsNullable = true;
+            param.SourceColumn = "tarefa_id";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Original_aluno_id";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
+            param.IsNullable = true;
+            param.SourceColumn = "aluno_id";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            this._adapter.InsertCommand = new global::Devart.Data.SQLite.SQLiteCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = "INSERT INTO \"main\".\"ResolucaoTarefa\" (\"id\", \"nota\", \"enviada\", \"tarefa_id\", \"alun" +
+                "o_id\") VALUES (:id, :nota, :enviada, :tarefa_id, :aluno_id)";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "id";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
+            param.IsNullable = true;
+            param.SourceColumn = "id";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "nota";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
+            param.IsNullable = true;
+            param.SourceColumn = "nota";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "enviada";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
+            param.IsNullable = true;
+            param.SourceColumn = "enviada";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "tarefa_id";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
+            param.IsNullable = true;
+            param.SourceColumn = "tarefa_id";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "aluno_id";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
+            param.IsNullable = true;
+            param.SourceColumn = "aluno_id";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            this._adapter.UpdateCommand = new global::Devart.Data.SQLite.SQLiteCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = @"UPDATE ""main"".""ResolucaoTarefa"" SET ""id"" = :id, ""nota"" = :nota, ""enviada"" = :enviada, ""tarefa_id"" = :tarefa_id, ""aluno_id"" = :aluno_id WHERE ((""id"" = :Original_id) AND ((:IsNull_nota = 1 AND ""nota"" IS NULL) OR (""nota"" = :Original_nota)) AND ((:IsNull_enviada = 1 AND ""enviada"" IS NULL) OR (""enviada"" = :Original_enviada)) AND (""tarefa_id"" = :Original_tarefa_id) AND (""aluno_id"" = :Original_aluno_id))";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "id";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
+            param.IsNullable = true;
+            param.SourceColumn = "id";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "nota";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
+            param.IsNullable = true;
+            param.SourceColumn = "nota";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "enviada";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
+            param.IsNullable = true;
+            param.SourceColumn = "enviada";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "tarefa_id";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
+            param.IsNullable = true;
+            param.SourceColumn = "tarefa_id";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "aluno_id";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
+            param.IsNullable = true;
+            param.SourceColumn = "aluno_id";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Original_id";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
+            param.IsNullable = true;
+            param.SourceColumn = "id";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "IsNull_nota";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "nota";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Original_nota";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
+            param.IsNullable = true;
+            param.SourceColumn = "nota";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "IsNull_enviada";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "enviada";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Original_enviada";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
+            param.IsNullable = true;
+            param.SourceColumn = "enviada";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Original_tarefa_id";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
+            param.IsNullable = true;
+            param.SourceColumn = "tarefa_id";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Original_aluno_id";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
+            param.IsNullable = true;
+            param.SourceColumn = "aluno_id";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::Devart.Data.SQLite.SQLiteConnection();
+            this._connection.ConnectionString = global::API.Tests.Properties.Settings.Default.ConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::Devart.Data.SQLite.SQLiteCommand[1];
+            this._commandCollection[0] = new global::Devart.Data.SQLite.SQLiteCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT id, nota, enviada, tarefa_id, aluno_id FROM \"main\".ResolucaoTarefa";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(banco_dataset.ResolucaoTarefaDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual banco_dataset.ResolucaoTarefaDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            banco_dataset.ResolucaoTarefaDataTable dataTable = new banco_dataset.ResolucaoTarefaDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(banco_dataset.ResolucaoTarefaDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(banco_dataset dataSet) {
+            return this.Adapter.Update(dataSet, "ResolucaoTarefa");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(long Original_id, global::System.Nullable<double> Original_nota, global::System.Nullable<long> Original_enviada, long Original_tarefa_id, long Original_aluno_id) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((long)(Original_id));
+            if ((Original_nota.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((double)(Original_nota.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            if ((Original_enviada.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((long)(Original_enviada.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.DeleteCommand.Parameters[5].Value = ((long)(Original_tarefa_id));
+            this.Adapter.DeleteCommand.Parameters[6].Value = ((long)(Original_aluno_id));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(long id, global::System.Nullable<double> nota, global::System.Nullable<long> enviada, long tarefa_id, long aluno_id) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((long)(id));
+            if ((nota.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((double)(nota.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((enviada.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((long)(enviada.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.InsertCommand.Parameters[3].Value = ((long)(tarefa_id));
+            this.Adapter.InsertCommand.Parameters[4].Value = ((long)(aluno_id));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(long id, global::System.Nullable<double> nota, global::System.Nullable<long> enviada, long tarefa_id, long aluno_id, long Original_id, global::System.Nullable<double> Original_nota, global::System.Nullable<long> Original_enviada, long Original_tarefa_id, long Original_aluno_id) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((long)(id));
+            if ((nota.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((double)(nota.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((enviada.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((long)(enviada.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((long)(tarefa_id));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((long)(aluno_id));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((long)(Original_id));
+            if ((Original_nota.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((double)(Original_nota.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            if ((Original_enviada.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((long)(Original_enviada.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[10].Value = ((long)(Original_tarefa_id));
+            this.Adapter.UpdateCommand.Parameters[11].Value = ((long)(Original_aluno_id));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(global::System.Nullable<double> nota, global::System.Nullable<long> enviada, long tarefa_id, long aluno_id, long Original_id, global::System.Nullable<double> Original_nota, global::System.Nullable<long> Original_enviada, long Original_tarefa_id, long Original_aluno_id) {
+            return this.Update(Original_id, nota, enviada, tarefa_id, aluno_id, Original_id, Original_nota, Original_enviada, Original_tarefa_id, Original_aluno_id);
         }
     }
     
@@ -8089,7 +9080,9 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
         
         private QuestaoTableAdapter _questaoTableAdapter;
         
-        private ResolucaoTableAdapter _resolucaoTableAdapter;
+        private ResolucaoQuestaoTableAdapter _resolucaoQuestaoTableAdapter;
+        
+        private ResolucaoTarefaTableAdapter _resolucaoTarefaTableAdapter;
         
         private TarefaTableAdapter _tarefaTableAdapter;
         
@@ -8175,12 +9168,26 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public ResolucaoTableAdapter ResolucaoTableAdapter {
+        public ResolucaoQuestaoTableAdapter ResolucaoQuestaoTableAdapter {
             get {
-                return this._resolucaoTableAdapter;
+                return this._resolucaoQuestaoTableAdapter;
             }
             set {
-                this._resolucaoTableAdapter = value;
+                this._resolucaoQuestaoTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
+        public ResolucaoTarefaTableAdapter ResolucaoTarefaTableAdapter {
+            get {
+                return this._resolucaoTarefaTableAdapter;
+            }
+            set {
+                this._resolucaoTarefaTableAdapter = value;
             }
         }
         
@@ -8275,9 +9282,13 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
                             && (this._questaoTableAdapter.Connection != null))) {
                     return this._questaoTableAdapter.Connection;
                 }
-                if (((this._resolucaoTableAdapter != null) 
-                            && (this._resolucaoTableAdapter.Connection != null))) {
-                    return this._resolucaoTableAdapter.Connection;
+                if (((this._resolucaoQuestaoTableAdapter != null) 
+                            && (this._resolucaoQuestaoTableAdapter.Connection != null))) {
+                    return this._resolucaoQuestaoTableAdapter.Connection;
+                }
+                if (((this._resolucaoTarefaTableAdapter != null) 
+                            && (this._resolucaoTarefaTableAdapter.Connection != null))) {
+                    return this._resolucaoTarefaTableAdapter.Connection;
                 }
                 if (((this._tarefaTableAdapter != null) 
                             && (this._tarefaTableAdapter.Connection != null))) {
@@ -8320,7 +9331,10 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
                 if ((this._questaoTableAdapter != null)) {
                     count = (count + 1);
                 }
-                if ((this._resolucaoTableAdapter != null)) {
+                if ((this._resolucaoQuestaoTableAdapter != null)) {
+                    count = (count + 1);
+                }
+                if ((this._resolucaoTarefaTableAdapter != null)) {
                     count = (count + 1);
                 }
                 if ((this._tarefaTableAdapter != null)) {
@@ -8400,12 +9414,21 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._resolucaoTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Resolucao.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._resolucaoQuestaoTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.ResolucaoQuestao.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._resolucaoTableAdapter.Update(updatedRows));
+                    result = (result + this._resolucaoQuestaoTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._resolucaoTarefaTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.ResolucaoTarefa.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._resolucaoTarefaTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -8485,11 +9508,19 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._resolucaoTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Resolucao.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._resolucaoQuestaoTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.ResolucaoQuestao.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._resolucaoTableAdapter.Update(addedRows));
+                    result = (result + this._resolucaoQuestaoTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._resolucaoTarefaTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.ResolucaoTarefa.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._resolucaoTarefaTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -8535,11 +9566,19 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._resolucaoTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Resolucao.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._resolucaoTarefaTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.ResolucaoTarefa.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._resolucaoTableAdapter.Update(deletedRows));
+                    result = (result + this._resolucaoTarefaTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._resolucaoQuestaoTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.ResolucaoQuestao.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._resolucaoQuestaoTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -8650,8 +9689,13 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
-            if (((this._resolucaoTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._resolucaoTableAdapter.Connection) == false))) {
+            if (((this._resolucaoQuestaoTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._resolucaoQuestaoTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
+                        "tring.");
+            }
+            if (((this._resolucaoTarefaTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._resolucaoTarefaTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
@@ -8743,13 +9787,22 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
                         adaptersWithAcceptChangesDuringUpdate.Add(this._questaoTableAdapter.Adapter);
                     }
                 }
-                if ((this._resolucaoTableAdapter != null)) {
-                    revertConnections.Add(this._resolucaoTableAdapter, this._resolucaoTableAdapter.Connection);
-                    this._resolucaoTableAdapter.Connection = ((global::Devart.Data.SQLite.SQLiteConnection)(workConnection));
-                    this._resolucaoTableAdapter.Transaction = ((global::System.Data.Common.DbTransaction)(workTransaction));
-                    if (this._resolucaoTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._resolucaoTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._resolucaoTableAdapter.Adapter);
+                if ((this._resolucaoQuestaoTableAdapter != null)) {
+                    revertConnections.Add(this._resolucaoQuestaoTableAdapter, this._resolucaoQuestaoTableAdapter.Connection);
+                    this._resolucaoQuestaoTableAdapter.Connection = ((global::Devart.Data.SQLite.SQLiteConnection)(workConnection));
+                    this._resolucaoQuestaoTableAdapter.Transaction = ((global::System.Data.Common.DbTransaction)(workTransaction));
+                    if (this._resolucaoQuestaoTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._resolucaoQuestaoTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._resolucaoQuestaoTableAdapter.Adapter);
+                    }
+                }
+                if ((this._resolucaoTarefaTableAdapter != null)) {
+                    revertConnections.Add(this._resolucaoTarefaTableAdapter, this._resolucaoTarefaTableAdapter.Connection);
+                    this._resolucaoTarefaTableAdapter.Connection = ((global::Devart.Data.SQLite.SQLiteConnection)(workConnection));
+                    this._resolucaoTarefaTableAdapter.Transaction = ((global::System.Data.Common.DbTransaction)(workTransaction));
+                    if (this._resolucaoTarefaTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._resolucaoTarefaTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._resolucaoTarefaTableAdapter.Adapter);
                     }
                 }
                 if ((this._tarefaTableAdapter != null)) {
@@ -8862,9 +9915,13 @@ namespace API.Tests.Persistencia.Datasets.banco_datasetTableAdapters {
                     this._questaoTableAdapter.Connection = ((global::Devart.Data.SQLite.SQLiteConnection)(revertConnections[this._questaoTableAdapter]));
                     this._questaoTableAdapter.Transaction = null;
                 }
-                if ((this._resolucaoTableAdapter != null)) {
-                    this._resolucaoTableAdapter.Connection = ((global::Devart.Data.SQLite.SQLiteConnection)(revertConnections[this._resolucaoTableAdapter]));
-                    this._resolucaoTableAdapter.Transaction = null;
+                if ((this._resolucaoQuestaoTableAdapter != null)) {
+                    this._resolucaoQuestaoTableAdapter.Connection = ((global::Devart.Data.SQLite.SQLiteConnection)(revertConnections[this._resolucaoQuestaoTableAdapter]));
+                    this._resolucaoQuestaoTableAdapter.Transaction = null;
+                }
+                if ((this._resolucaoTarefaTableAdapter != null)) {
+                    this._resolucaoTarefaTableAdapter.Connection = ((global::Devart.Data.SQLite.SQLiteConnection)(revertConnections[this._resolucaoTarefaTableAdapter]));
+                    this._resolucaoTarefaTableAdapter.Transaction = null;
                 }
                 if ((this._tarefaTableAdapter != null)) {
                     this._tarefaTableAdapter.Connection = ((global::Devart.Data.SQLite.SQLiteConnection)(revertConnections[this._tarefaTableAdapter]));
