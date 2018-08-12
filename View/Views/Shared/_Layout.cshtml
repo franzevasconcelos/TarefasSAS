@@ -32,8 +32,8 @@
 
                 </ul>
                 <ul class="nav navbar-nav pull-right" >
-                    <li style="padding: 15px 0; color: #ffffff">@Helpers.ObterNome()</li>
                     @if (User.Identity.IsAuthenticated) {
+                        <li style="padding: 15px 0; color: #ffffff">@Helpers.ObterNome()</li>
                         <li>@Html.ActionLink("Sair", "Sair", "Home")</li>
                     }
                 </ul>
