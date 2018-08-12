@@ -146,6 +146,7 @@
     <Compile Include="Configuracoes\NhibernateSetup.cs" />
     <Compile Include="Controllers\AlunosController.cs" />
     <Compile Include="Controllers\QuestoesController.cs" />
+    <Compile Include="Controllers\TurmaController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\TarefasController.cs" />
     <Compile Include="DbMappings\AlunoMap.cs" />
@@ -168,10 +169,12 @@
     </Compile>
     <Compile Include="Mappers\QuestaoMapper.cs" />
     <Compile Include="Mappers\TarefaMapper.cs" />
+    <Compile Include="Mappers\TurmaMapper.cs" />
     <Compile Include="Models\TipoUsuario.cs" />
     <Compile Include="Persistencia\Professores.cs" />
     <Compile Include="Persistencia\Questoes.cs" />
     <Compile Include="Persistencia\Tarefas.cs" />
+    <Compile Include="Persistencia\Turmas.cs" />
     <Compile Include="Persistencia\Usuarios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

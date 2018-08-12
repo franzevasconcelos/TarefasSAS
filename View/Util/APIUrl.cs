@@ -23,7 +23,15 @@ namespace View.Util {
         }
 
         public static string Tarefas(int idProfessor) {
-            return EnderecoBase() + $"tarefas/lista?idProfessor={idProfessor}";
+            return EnderecoBase() + $"tarefas/listar?idProfessor={idProfessor}";
+        }
+
+        public static string Turmas(int idProfessor) {
+            return EnderecoBase() + $"turma/listar?idProfessor={idProfessor}";
+        }
+
+        public static string EnviarTarefaTurma() {
+            return EnderecoBase() + $"turma/SalvarTarefa";
         }
     }
 }

@@ -19,7 +19,8 @@
         for (var i = 0; i < Model.Count; i++) {
             <li>
                 <span>Tarefa @(Model[i].Id)</span>
-                <button class="btn btn-sm btn-default">Enviar à uma turma</button>
+                @Html.ActionLink("Enviar à uma turma", "EnviarTarefaATurma", new { idTarefa = Model[i].Id}, new {@class="btn btn-sm btn-default"})
+                
             </li>
         }
     }

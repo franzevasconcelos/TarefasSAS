@@ -154,6 +154,7 @@
     <Compile Include="Controllers\ProfessorController.cs" />
     <Compile Include="Mappers\QuestaoMapper.cs" />
     <Compile Include="Mappers\TarefaMapper.cs" />
+    <Compile Include="Mappers\TurmaMapper.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Util\APIUrl.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -167,6 +168,7 @@
     <Compile Include="Util\Helpers.cs" />
     <Compile Include="ViewModels\QuestaoViewModel.cs" />
     <Compile Include="ViewModels\TarefaViewModel.cs" />
+    <Compile Include="ViewModels\TurmaViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -209,6 +211,7 @@
     <Content Include="Views\Home\Aluno.cshtml" />
     <Content Include="Views\Professor\NovaTarefa.cshtml" />
     <Content Include="Views\Professor\NovaQuestao.cshtml" />
+    <Content Include="Views\Professor\EnviarTarefaATurma.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

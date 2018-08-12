@@ -12,7 +12,7 @@ namespace API.Tests.Persistencia {
         public void DeveTrazerTodasAsTarefasDeUmProfessorCorretamente() {
             var tarefas = new Tarefas(Sessao);
 
-            var tarefasEncontradas = tarefas.Por(1);
+            var tarefasEncontradas = tarefas.PorProfessor(1);
 
             Assert.That(tarefasEncontradas.Count, Is.EqualTo(3));
             Assert.That(tarefasEncontradas[0].Id, Is.EqualTo(1));

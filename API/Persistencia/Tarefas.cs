@@ -10,7 +10,11 @@ namespace TarefasSAS.API.Persistencia {
             _session = session;
         }
 
-        public virtual IList<Tarefa> Por(int idProfessor) {
+        public virtual Tarefa Por(int id) {
+            return _session.QueryOver<Tarefa>().Where(t => t.Id == id).SingleOrDefault();
+        }
+
+        public virtual IList<Tarefa> PorProfessor(int idProfessor) {
             return _session.QueryOver<Tarefa>()
                            .Where(t => t.Professor.Id == idProfessor)
                            .List();

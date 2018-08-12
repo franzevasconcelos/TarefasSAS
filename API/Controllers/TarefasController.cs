@@ -29,7 +29,7 @@ namespace TarefasSAS.API.Controllers
                 return BadRequest("É necessário informar um professor.");
             }
 
-            var tarefas = _tarefas.Por(idProfessor);
+            var tarefas = _tarefas.PorProfessor(idProfessor);
 
             if (tarefas == null)
                 return NotFound();

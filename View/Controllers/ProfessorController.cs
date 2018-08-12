@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Web.Mvc;
 using AutoMapper;
+using Interface;
 using Newtonsoft.Json;
 using View.Util;
 using View.ViewModels;
@@ -80,6 +81,40 @@ namespace View.Controllers {
                     return View();
                 }
             }
+        }
+
+        [HttpGet]
+        public ActionResult EnviarTarefaATurma(int idTarefa) {
+            using (var client = new WebClient()) {
+                try {
+                    var obj = client.DownloadString(APIUrl.Turmas(Convert.ToInt32(User.Identity.Name)));
+                    var turmas = JsonConvert.DeserializeObject(obj, typeof(List<Interface.Turma>));
+
+                    var viewModel = Mapper.Map<TarefaViewModel>(turmas);
+                    viewModel.Id = idTarefa;
+
+                    return View(viewModel);
+                } catch (WebException ex) {
+                    ModelState.AddModelError(string.Empty, ex.Message);
+                    return View();
+                }
+            }
+        }
+
+        [HttpPost]
+        public ActionResult EnviarTarefaATurma(TarefaViewModel viewModel) {
+            var tarefaMapeada = Mapper.Map<TarefaTurma>(viewModel);
+
+            using (var client = new WebClient()) {
+                client.Headers.Add(HttpRequestHeader.ContentType, "application/json");
+                try {
+                    client.UploadString(APIUrl.EnviarTarefaTurma(), "POST", JsonConvert.SerializeObject(tarefaMapeada));
+                } catch (WebException ex) {
+                    ModelState.AddModelError(string.Empty, ex.Message);
+                }
+            }
+
+            return RedirectToAction("Index");
         }
     }
 }
