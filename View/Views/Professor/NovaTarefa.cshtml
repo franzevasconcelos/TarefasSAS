@@ -1,0 +1,38 @@
+﻿@model View.ViewModels.TarefaViewModel
+
+@{
+    ViewBag.Title = "Nova Tarefa";
+}
+
+<h2>Nova Tarefa</h2>
+
+<h4>Selecione as questões a incluir na tarefa</h4>
+@using (Html.BeginForm()) {
+    if (Model.Questoes.Any()) {
+         <table class="table table-bordered">
+             <thead>
+             <tr>
+                 <td class="col-md-1"></td>
+                 <td>Pergunta</td>
+             </tr>
+             </thead>
+             <tbody>
+
+             @for (var i = 0; i < Model.Questoes.Count; i++) {
+             <tr>
+                 <td>
+                     @Html.CheckBox($"Questoes[{i}].DeveSalvar", Model.Questoes[i].DeveSalvar)
+                     @Html.Hidden($"Questoes[{i}].Id", Model.Questoes[i].Id)
+                 </td>
+                 <td>
+                     @Html.Label($"Questoes[{i}].Pergunta", Model.Questoes[i].Pergunta)
+                 </td>
+             </tr>
+             }
+             </tbody>
+         </table>
+     } else {
+        <h4>Nenhuma questão criada. Crie novas questões @Html.ActionLink("aqui", "NovaQuestao").</h4>
+    }
+    <button type="submit" class="btn btn-primary">Salvar</button>
+}

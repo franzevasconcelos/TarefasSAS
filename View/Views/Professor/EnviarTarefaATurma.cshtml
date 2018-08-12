@@ -1,0 +1,18 @@
+﻿@model View.ViewModels.TarefaViewModel
+
+@{
+    ViewBag.Title = "Envie uma tarefa à uma turma";
+}
+
+<h2>Envie uma tarefa à uma turma</h2>
+<hr/>
+
+@using (Html.BeginForm()) {
+    <span>Tarefa @Model.Id</span>
+    @Html.HiddenFor(m => m.Id)
+    <div class="form-group">
+        <label>Selecione uma turma</label>
+        @Html.DropDownListFor(m => m.TurmaEscolhida, new SelectList(Model.Turmas, "Id", "Nome"))
+    </div>
+    <button type="submit" class="btn btn-primary">Enviar tarefa</button>
+}

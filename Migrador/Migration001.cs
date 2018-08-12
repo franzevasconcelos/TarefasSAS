@@ -10,7 +10,10 @@ namespace Migrador {
                   .PrimaryKey("pk_professor")
                   .Identity()
                   .WithColumn("nome")
-                  .AsString(100);
+                  .AsString(100)
+                  .WithColumn("usuario_id")
+                  .AsInt32()
+                  .ForeignKey("usuario", "id");
 
             Create.Table("Turma")
                   .WithColumn("id")
@@ -33,8 +36,17 @@ namespace Migrador {
                   .WithColumn("turma_id")
                   .AsInt32()
                   .ForeignKey("turma", "id")
-                  .Nullable();
-            
+                  .Nullable()
+                  .WithColumn("email")
+                  .AsString(50)
+                  .Nullable()
+                  .WithColumn("nascimento")
+                  .AsString(20)
+                  .Nullable()
+                  .WithColumn("usuario_id")
+                  .AsInt32()
+                  .ForeignKey("usuario", "id");
+
             Create.Table("Tarefa")
                   .WithColumn("id")
                   .AsInt32()
@@ -56,16 +68,20 @@ namespace Migrador {
                   .ForeignKey("professor", "id");
 
             Create.Table("TarefaQuestao")
-                  .WithColumn("id")
-                  .AsInt32()
-                  .PrimaryKey("pk_questao_tarefa")
-                  .Identity()
                   .WithColumn("tarefa_id")
                   .AsInt32()
                   .ForeignKey("tarefa", "id")
                   .WithColumn("questao_id")
                   .AsInt32()
                   .ForeignKey("questao", "id");
+
+            Create.Table("Usuario")
+                  .WithColumn("id")
+                  .AsInt32()
+                  .PrimaryKey()
+                  .Identity()
+                  .WithColumn("login")
+                  .AsString(100);
         }
 
         public override void Down() { }
