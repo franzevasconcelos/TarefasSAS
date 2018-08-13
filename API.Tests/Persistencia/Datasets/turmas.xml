@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<banco_dataset xmlns="http://tempuri.org/banco_dataset.xsd">
+  <Usuario>
+    <id>1</id>
+    <login>1</login>
+  </Usuario>
+  
+  <Usuario>
+    <id>2</id>
+    <login>2</login>
+  </Usuario>
+
+  <Usuario>
+    <id>3</id>
+    <login>3</login>
+  </Usuario>
+
+  <Professor>
+    <id>1</id>
+    <nome>fulano</nome>
+    <usuario_id>3</usuario_id>
+  </Professor>
+  
+  <Turma>
+   <id>1</id>
+    <nome>turma</nome>
+    <professor_id>1</professor_id>
+  </Turma>
+  
+  <Aluno>
+    <id>1</id>
+    <nome>Aluno</nome>
+    <turma_id>1</turma_id>
+    <usuario_id>1</usuario_id>
+  </Aluno>
+  
+  <Aluno>
+    <id>2</id>
+    <nome>Aluno 2</nome>
+    <turma_id>1</turma_id>
+    <usuario_id>2</usuario_id>
+  </Aluno>
+
+</banco_dataset>

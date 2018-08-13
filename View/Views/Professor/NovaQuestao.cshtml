@@ -1,0 +1,19 @@
+﻿@model View.ViewModels.QuestaoViewModel
+
+@{
+    ViewBag.Title = "Nova Questão";
+}
+
+<h3>Cadastre Uma Nova Questão</h3>
+
+<div class="row">
+    <div class="col-md-6">
+        @Html.ValidationSummary()
+        @using (Html.BeginForm()) {
+            <div class="form-group">
+                @Html.TextAreaFor(m => m.Pergunta, new {@class = "form-control "})
+            </div>
+            <button type="submit" class="btn btn-primary">Salvar</button>
+        }
+    </div>
+</div>

@@ -1,0 +1,29 @@
+﻿@model List<View.ViewModels.TarefaViewModel>
+
+@{
+    ViewBag.Title = "Área do professor";
+}
+
+<h2>
+    Área do professor
+
+    @Html.ActionLink("Nova Tarefa", "NovaTarefa", "Professor", null, null, null, null, new {@class = "btn btn-default"})
+    @Html.ActionLink("Nova Questão", "NovaQuestao", "Professor", null, null, null, null, new {@class = "btn btn-default"})
+</h2>
+<hr/>
+<h4>Tarefas criadas</h4>
+
+<ul>
+    @if (Model != null && Model.Any()) {
+
+        for (var i = 0; i < Model.Count; i++) {
+            <li style="padding:10px 0">
+                <span>Tarefa @(Model[i].Id)</span>
+                <div class="btn-group btn-group-sm">
+                    @Html.ActionLink("Enviar à uma turma", "EnviarTarefaATurma", new { idTarefa = Model[i].Id }, new { @class = "btn btn-sm btn-default" })
+                    @Html.ActionLink("Corrigir", "CorrigirTarefa", new { idTarefa = Model[i].Id }, new { @class = "btn btn-sm btn-default" })
+                </div>
+            </li>
+        }
+    }
+</ul>
