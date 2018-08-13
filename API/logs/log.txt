@@ -1,0 +1,16 @@
+INFO  2018-08-12 23:02:30,931  1526ms AlunosController       Index              - teste
+INFO  2018-08-12 23:16:03,475  1395ms AlunosController       Index              - teste
+INFO  2018-08-12 23:17:07,812 65732ms AlunosController       Index              - teste
+INFO  2018-08-12 23:18:00,374 118293ms AlunosController       Index              - teste
+INFO  2018-08-12 23:18:01,058 118977ms AlunosController       Index              - teste
+INFO  2018-08-12 23:18:01,274 119194ms AlunosController       Index              - teste
+INFO  2018-08-12 23:18:01,713 119633ms AlunosController       Index              - teste
+INFO  2018-08-12 23:18:01,863 119782ms AlunosController       Index              - teste
+INFO  2018-08-12 23:18:04,960 122879ms AlunosController       Index              - teste
+INFO  2018-08-12 23:18:25,253 143172ms AlunosController       Index              - teste
+INFO  2018-08-12 23:18:27,592 145511ms AlunosController       Index              - teste
+INFO  2018-08-12 23:18:27,778 145697ms AlunosController       Index              - teste
+INFO  2018-08-12 23:18:27,925 145844ms AlunosController       Index              - teste
+INFO  2018-08-12 23:18:28,824 146743ms AlunosController       Index              - teste
+INFO  2018-08-12 23:21:07,291 305210ms AlunosController       Index              - teste
+INFO  2018-08-12 23:23:31,145  1400ms AlunosController       Index              - teste

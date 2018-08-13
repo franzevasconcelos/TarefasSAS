@@ -1,4 +1,5 @@
 ﻿using System.Web.Http;
+using AutoMapper;
 using TarefasSAS.API.Configuracoes;
 using TarefasSAS.API.Persistencia;
 
@@ -14,6 +15,7 @@ namespace TarefasSAS.API.Controllers {
 
         [HttpGet]
         public IHttpActionResult Index(string login) {
+
             if (string.IsNullOrEmpty(login))
                 return BadRequest("Informe o login");
 
