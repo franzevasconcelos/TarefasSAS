@@ -1,0 +1,50 @@
+﻿@model View.ViewModels.ResolucaoViewModel
+
+@{
+    ViewBag.Title = "Corrigir Tarefa " + Model.IdTarefa;
+}
+
+<h2>Corrigir Tarefa @Model.IdTarefa</h2>
+
+<hr/>
+<div class="row">
+    @using (Html.BeginForm()) {
+        @Html.HiddenFor(m => m.IdTarefa)
+        for (var i = 0; i < Model.Questoes.Count; i++) {
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+
+                        <h5>@(i + 1)) @Html.Label($"Questoes[i].Pergunta", Model.Questoes[i].Pergunta)</h5>
+
+                        <span>Resposta: </span>
+                        <span>
+                            @Html.Hidden($"Questoes[{i}].Id", Model.Questoes[i].Id)
+                            @Html.Hidden($"Questoes[{i}].IdAluno", Model.Questoes[i].IdAluno)
+                            @Html.Hidden($"Questoes[{i}].Resposta", Model.Questoes[i].Resposta)
+                            @Model.Questoes[i].Resposta
+                        </span>
+
+
+                    </div>
+                    <div class="form-group">
+
+                        <label>Comentário</label>
+                        @Html.TextArea($"Questoes[{i}].Comentario", Model.Questoes[i].Comentario, new {@class = "form-control"})
+
+                    </div>
+                    <hr/>
+                </div>
+            </div>
+        }
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Nota</label>
+                    @Html.TextBoxFor(m => m.Nota, new {@class = "form-control"})
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+    }
+</div>

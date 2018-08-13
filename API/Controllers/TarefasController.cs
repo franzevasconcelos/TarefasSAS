@@ -10,17 +10,20 @@ namespace TarefasSAS.API.Controllers {
     public class TarefasController : ApiController {
         private readonly Tarefas _tarefas;
         private readonly Resolucoes _resolucoes;
+        private readonly IMapper _mapper;
 
-        TarefasController() : this(new Tarefas(NhibernateSetup.GetSession()),
-                                   new Resolucoes(NhibernateSetup.GetSession())) { }
+        public TarefasController() : this(new Tarefas(NhibernateSetup.GetSession()),
+                                   new Resolucoes(NhibernateSetup.GetSession()),
+                                   Mapper.Instance) { }
 
-        TarefasController(Tarefas tarefas, Resolucoes resolucoes) {
+        public TarefasController(Tarefas tarefas, Resolucoes resolucoes, IMapper mapper) {
             _tarefas = tarefas;
             _resolucoes = resolucoes;
+            _mapper = mapper;
         }
 
         public IHttpActionResult Salvar(Interface.Tarefa tarefa) {
-            var tarefaMapeada = Mapper.Map<Tarefa>(tarefa);
+            var tarefaMapeada = _mapper.Map<Tarefa>(tarefa);
             _tarefas.Salvar(tarefaMapeada);
             return Ok();
         }
@@ -33,10 +36,10 @@ namespace TarefasSAS.API.Controllers {
 
             var tarefas = _tarefas.PorProfessor(idProfessor);
 
-            if (tarefas == null)
+            if (!tarefas.Any())
                 return NotFound();
 
-            var tarefasMapeadas = Mapper.Map<List<Interface.Tarefa>>(tarefas);
+            var tarefasMapeadas = _mapper.Map<List<Interface.Tarefa>>(tarefas);
 
             return Ok(tarefasMapeadas);
         }
@@ -44,31 +47,31 @@ namespace TarefasSAS.API.Controllers {
         [HttpGet]
         public IHttpActionResult AResolver(int idAluno) {
             if (idAluno <= 0) {
-                return BadRequest("É necessário informar um professor.");
+                return BadRequest("É necessário informar um aluno.");
             }
 
             var resolucoesTarefasEncontradas = _resolucoes.PorAluno(idAluno);
 
-            var resolucaoMapeada = Mapper.Map<List<Interface.Resolucao>>(resolucoesTarefasEncontradas);
+            var resolucaoMapeada = _mapper.Map<List<Interface.Resolucao>>(resolucoesTarefasEncontradas);
 
             return Ok(resolucaoMapeada);
         }
 
         [HttpGet]
         public IHttpActionResult PorId(int idTarefa, int idAluno) {
-            if (idTarefa <= 0)
+            if (idTarefa <= 0 || idAluno <= 0)
             {
-                return BadRequest("É necessário informar um professor.");
+                return BadRequest("É necessário informar o aluno e a tarefa.");
             }
 
             var tarefaEncontrada = _tarefas.Por(idTarefa);
             var listaResolucaoQuestao = _resolucoes.ResolucaoQuestaoPorTarefaEAluno(tarefaEncontrada.Id, idAluno);
 
-            var resolucaoMapeada = Mapper.Map<Interface.Resolucao>(tarefaEncontrada);
+            var resolucaoMapeada = _mapper.Map<Interface.Resolucao>(tarefaEncontrada);
 
             if (listaResolucaoQuestao.Any()) {
                 foreach (var item in resolucaoMapeada.Questoes) {
-                    item.Cometario = listaResolucaoQuestao.FirstOrDefault(l => l.Questao.Id == item.Id)?.Comentario;
+                    item.Comentario = listaResolucaoQuestao.FirstOrDefault(l => l.Questao.Id == item.Id)?.Comentario;
                     item.Resposta= listaResolucaoQuestao.FirstOrDefault(l => l.Questao.Id == item.Id)?.Resposta;
                 }
             }

@@ -17,10 +17,12 @@
     @if (Model != null && Model.Any()) {
 
         for (var i = 0; i < Model.Count; i++) {
-            <li>
+            <li style="padding:10px 0">
                 <span>Tarefa @(Model[i].Id)</span>
-                @Html.ActionLink("Enviar à uma turma", "EnviarTarefaATurma", new { idTarefa = Model[i].Id}, new {@class="btn btn-sm btn-default"})
-                
+                <div class="btn-group btn-group-sm">
+                    @Html.ActionLink("Enviar à uma turma", "EnviarTarefaATurma", new { idTarefa = Model[i].Id }, new { @class = "btn btn-sm btn-default" })
+                    @Html.ActionLink("Corrigir", "CorrigirTarefa", new { idTarefa = Model[i].Id }, new { @class = "btn btn-sm btn-default" })
+                </div>
             </li>
         }
     }

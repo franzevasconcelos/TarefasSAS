@@ -23,11 +23,16 @@ namespace TarefasSAS.API.Persistencia {
             _session.SaveOrUpdate(resolucaoTarefa);
         }
 
-        public virtual void SalvarResolucaoQuestao(List<ResolucaoQuestao> resolucaoMapeada) {
-            foreach (var item in resolucaoMapeada) {
-                _session.SaveOrUpdate(item);
+        public virtual void SalvarResolucaoQuestao(List<ResolucaoQuestao> listaResolucaoQuestao) {
+            foreach (var item in listaResolucaoQuestao) {
+                SalvarResolucaoQuestao(item);
             }
         }
+
+        public virtual void SalvarResolucaoQuestao(ResolucaoQuestao resolucaoQuestao) {
+            _session.SaveOrUpdate(resolucaoQuestao);
+        }
+
 
         public virtual ResolucaoTarefa ResolucaoTarefaPorId(int id) {
             return _session.Get<ResolucaoTarefa>(id);
@@ -42,6 +47,18 @@ namespace TarefasSAS.API.Persistencia {
                            .Where(r => tarefa.Id == idTarefa)
                            .And(r => aluno.Id == idAluno)
                            .List();
+        }
+
+        public ResolucaoTarefa ResolucaoTarefaPorTarefaEAluno(int idAluno, int idTarefa) {
+            Tarefa tarefa = null;
+            Aluno aluno = null;
+
+            return _session.QueryOver<ResolucaoTarefa>()
+                           .JoinAlias(r => r.Aluno, () => aluno)
+                           .JoinAlias(r => r.Tarefa, () => tarefa)
+                           .Where(() => aluno.Id == idAluno)
+                           .And(() => tarefa.Id == idTarefa)
+                           .SingleOrDefault();
         }
     }
 }

@@ -94,4 +94,12 @@
     <aluno_id>1</aluno_id>
   </ResolucaoTarefa>
 
+  <ResolucaoQuestao>
+    <id>1</id>
+    <resposta>teste</resposta>
+    <tarefa_id>1</tarefa_id>
+    <questao_id>1</questao_id>
+    <aluno_id>1</aluno_id>
+  </ResolucaoQuestao>
+
 </banco_dataset>

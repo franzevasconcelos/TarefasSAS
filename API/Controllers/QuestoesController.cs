@@ -10,17 +10,22 @@ namespace TarefasSAS.API.Controllers {
     public class QuestoesController : ApiController {
         private readonly Questoes _questoes;
         private readonly Tarefas _tarefas;
-        QuestoesController() : this(new Questoes(NhibernateSetup.GetSession()), 
-                                    new Tarefas(NhibernateSetup.GetSession())) { }
+        private readonly IMapper _mapper;
 
-        public QuestoesController(Questoes questoes, Tarefas tarefas) {
+        QuestoesController() : this(new Questoes(NhibernateSetup.GetSession()), 
+                                    new Tarefas(NhibernateSetup.GetSession()),
+                                    Mapper.Instance
+                                    ) { }
+
+        public QuestoesController(Questoes questoes, Tarefas tarefas, IMapper mapper) {
             _questoes = questoes;
             _tarefas = tarefas;
+            _mapper = mapper;
         }
 
         [HttpPost]
         public IHttpActionResult Salvar(Interface.Questao questao) {
-            var questaoMapeada = Mapper.Map<Questao>(questao);
+            var questaoMapeada = _mapper.Map<Questao>(questao);
             _questoes.Salvar(questaoMapeada);
             return Ok();
         }
@@ -37,7 +42,7 @@ namespace TarefasSAS.API.Controllers {
                 return NotFound();
             }
 
-            var questoesMapeadas = Mapper.Map<IList<Interface.Questao>>(questoesEncontradas);
+            var questoesMapeadas = _mapper.Map<IList<Interface.Questao>>(questoesEncontradas);
 
             return Ok(questoesMapeadas);
         }
@@ -54,7 +59,7 @@ namespace TarefasSAS.API.Controllers {
                 return NotFound();
             }
 
-            var questoesMapeadas = Mapper.Map<IList<Interface.Questao>>(questoesEncontradas);
+            var questoesMapeadas = _mapper.Map<IList<Interface.Questao>>(questoesEncontradas);
 
             return Ok(questoesMapeadas);
         }

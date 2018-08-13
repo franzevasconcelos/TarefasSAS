@@ -10,10 +10,6 @@ namespace TarefasSAS.API.Persistencia {
             _session = session;
         }
 
-        public IList<Professor> Todos() {
-            return _session.QueryOver<Professor>().List();
-        }
-
         public virtual Professor Por(int id) {
             return _session.Get<Professor>(id);
         }
