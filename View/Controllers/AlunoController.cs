@@ -69,6 +69,27 @@ namespace View.Controllers {
             }
         }
 
+        public ActionResult VerCorrecao(int idAluno, int idTarefa) {
+            using (var client = new WebClient()) {
+                try {
+                    var obj = client.DownloadString(APIUrl.ResolucaoQuestaoObterResolucaoAluno(idAluno, idTarefa));
+                    var resolucoes = JsonConvert.DeserializeObject(obj, typeof(Interface.Resolucao));
+
+                    var viewModel = Mapper.Map<ResolucaoViewModel>(resolucoes);
+                    viewModel.IdTarefa = idTarefa;
+
+                    foreach (var questao in viewModel.Questoes) {
+                        questao.IdAluno = idAluno;
+                    }
+
+                    return View(viewModel);
+                } catch (WebException ex) {
+                    ModelState.AddModelError(string.Empty, ex.Message);
+                    return View();
+                }
+            }
+        }
+
         public ActionResult EnviarParaCorrecao(int idResolucao) {
             var resolucao = new Resolucao {
                                               Id = idResolucao,

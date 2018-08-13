@@ -26,12 +26,23 @@
                             Tarefa @Model[i].IdTarefa
                         </td>
                         @if (Model[i].Enviada) {
-                            <td>
-                                <label>Aguardando nota</label>
-                            </td>
-                            <td>
-                                <label>Tarefa enviada para correção</label>
-                            </td>
+                            if (Model[i].Nota > 0) {
+                                <td>
+                                    <label>
+                                        @Html.ActionLink("Ver correção", "VerCorrecao", new { idTarefa = Model[i].IdTarefa, idAluno = User.Identity.Name }, new { @class = "btn btn-default btn-sm" })
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>Tarefa corrigida</label>
+                                </td>
+                            } else {
+                                <td>
+                                    <label>Aguardando nota</label>
+                                </td>
+                                <td>
+                                    <label>Tarefa enviada para correção</label>
+                                </td>
+                            }
                         } else {
                             <td>
                                 @Html.ActionLink("Resolver", "ResolverTarefa", new {idTarefa = Model[i].IdTarefa}, new {@class = "btn btn-default btn-sm"})

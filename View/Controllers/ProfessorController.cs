@@ -156,7 +156,43 @@ namespace View.Controllers {
         }
 
         public ActionResult AbrirResolucao(int idAluno, int idTarefa) {
-            return null;
+            using (var client = new WebClient()) {
+                try {
+                    var obj = client.DownloadString(APIUrl.ResolucaoQuestaoObterResolucaoAluno(idAluno, idTarefa));
+                    var resolucoes = JsonConvert.DeserializeObject(obj, typeof(Interface.Resolucao));
+
+                    var viewModel = Mapper.Map<ResolucaoViewModel>(resolucoes);
+                    viewModel.IdTarefa = idTarefa;
+
+                    foreach (var questao in viewModel.Questoes) {
+                        questao.IdAluno = idAluno;
+                    }
+
+                    return View(viewModel);
+                } catch (WebException ex) {
+                    ModelState.AddModelError(string.Empty, ex.Message);
+                    return View();
+                }
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Abrirresolucao(ResolucaoViewModel viewModel) {
+            var resolucao = Mapper.Map<Resolucao>(viewModel);
+            resolucao.IdAluno = viewModel.Questoes[0].IdAluno;
+
+            using (var client = new WebClient()) {
+                client.Headers.Add(HttpRequestHeader.ContentType, "application/json");
+                try {
+                    client.UploadString(APIUrl.ResolucaoQuestaoSalvarResolucaoAluno(), "PUT",
+                                        JsonConvert.SerializeObject(resolucao));
+
+                    return RedirectToAction("Index");
+                } catch (WebException ex) {
+                    ModelState.AddModelError(string.Empty, ex.Message);
+                    return RedirectToAction("Index");
+                }
+            }
         }
     }
 }

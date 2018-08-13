@@ -11,6 +11,18 @@ namespace TarefasSAS.API.Mappers {
 
             CreateMap<Questao, Interface.Questao>()
                 .ForMember(dest => dest.IdProfessor, opt => opt.MapFrom(src => src.Professor.Id));
+
+            CreateMap<ResolucaoQuestao, Interface.Questao>()
+                .ConstructUsing(Ctor)
+                .ForAllMembers(opt => opt.Ignore());
+        }
+
+        private Interface.Questao Ctor(ResolucaoQuestao arg) {
+            var questao = Mapper.Map<Interface.Questao>(arg.Questao);
+            questao.Resposta = arg.Resposta;
+            questao.Comentario = arg.Comentario;
+            
+            return questao;
         }
 
         private Professor ObterProfessor(int id) {

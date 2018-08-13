@@ -1,4 +1,5 @@
-﻿using FluentNHibernate.Cfg;
+﻿using System.Configuration;
+using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using NHibernate;
 using TarefasSAS.API.DbMappings;
@@ -6,7 +7,7 @@ using TarefasSAS.API.DbMappings;
 namespace TarefasSAS.API.Configuracoes {
     public static class NhibernateSetup {
         public static ISessionFactory SessionFactory;
-        private const string ArquivoSqlite = @"D:\Desenvolvimento\SQLite\tarefas_sas.db";
+        private static readonly string ArquivoSqlite = new AppSettingsReader().GetValue("Banco.Arquivo", typeof(string)).ToString();
 
         public static void Init() {
             SessionFactory = Fluently.Configure()

@@ -5,12 +5,13 @@ using AutoMapper;
 using TarefasSAS.API.Configuracoes;
 using TarefasSAS.API.Entidades;
 using TarefasSAS.API.Persistencia;
+using Tarefa = TarefasSAS.API.Entidades.Tarefa;
 
 namespace TarefasSAS.API.Mappers {
     public class ResolucaoMapper : Profile {
         public ResolucaoMapper() {
             CreateMap<ResolucaoTarefa, Interface.Resolucao>()
-                .ConstructUsing(ObterResolucao)
+                .ConstructUsing(ObterResolucaoAPartirResolucaoTarefa)
                 .ForAllMembers(opt => opt.Ignore());
 
             CreateMap<Tarefa, Interface.Resolucao>()
@@ -20,6 +21,24 @@ namespace TarefasSAS.API.Mappers {
             CreateMap<Interface.Resolucao, List<ResolucaoQuestao>>()
                 .ConstructUsing(ObterResolucaoQuestao)
                 .ForAllMembers(opt => opt.Ignore());
+
+            CreateMap<List<ResolucaoQuestao>, Interface.Resolucao>()
+                .ConstructUsing(Ctor)
+                .ForAllMembers(opt => opt.Ignore());
+        }
+
+        private Interface.Resolucao Ctor(List<ResolucaoQuestao> arg) {
+            var resolucao = new Interface.Resolucao();
+
+            resolucao.Questoes = Mapper.Map<List<Interface.Questao>>(arg);
+
+            var resolucoes = new Resolucoes(NhibernateSetup.GetSession());
+            var resolucaoTarefa = resolucoes.ResolucaoTarefaPorTarefaEAluno(arg[0].Aluno.Id, arg[0].Tarefa.Id);
+
+            resolucao.Enviada = resolucaoTarefa.Enviada;
+            resolucao.Nota = resolucaoTarefa.Nota;
+
+            return resolucao;
         }
 
         private List<ResolucaoQuestao> ObterResolucaoQuestao(Interface.Resolucao arg) {
@@ -62,7 +81,7 @@ namespace TarefasSAS.API.Mappers {
             return listaResolucoes;
         }
 
-        private Interface.Resolucao ObterResolucao(ResolucaoTarefa arg) {
+        private Interface.Resolucao ObterResolucaoAPartirResolucaoTarefa(ResolucaoTarefa arg) {
             var resolucao = new Interface.Resolucao {
                                                         Id = arg.Id,
                                                         IdTarefa = arg.Tarefa.Id,

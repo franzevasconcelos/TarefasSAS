@@ -23,11 +23,16 @@ namespace TarefasSAS.API.Persistencia {
             _session.SaveOrUpdate(resolucaoTarefa);
         }
 
-        public virtual void SalvarResolucaoQuestao(List<ResolucaoQuestao> resolucaoMapeada) {
-            foreach (var item in resolucaoMapeada) {
-                _session.SaveOrUpdate(item);
+        public virtual void SalvarResolucaoQuestao(List<ResolucaoQuestao> listaResolucaoQuestao) {
+            foreach (var item in listaResolucaoQuestao) {
+                SalvarResolucaoQuestao(item);
             }
         }
+
+        public virtual void SalvarResolucaoQuestao(ResolucaoQuestao resolucaoQuestao) {
+            _session.SaveOrUpdate(resolucaoQuestao);
+        }
+
 
         public virtual ResolucaoTarefa ResolucaoTarefaPorId(int id) {
             return _session.Get<ResolucaoTarefa>(id);

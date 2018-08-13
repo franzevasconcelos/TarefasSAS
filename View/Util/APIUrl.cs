@@ -38,6 +38,10 @@ namespace View.Util {
             return EnderecoBase() + "resolucaoquestao/salvar";
         }
 
+        public static string ResolucaoQuestaoObterResolucaoAluno(int idAluno, int idTarefa) {
+            return EnderecoBase() + $"resolucaoquestao/ObterResolucaoAluno?idAluno={idAluno}&idTarefa={idTarefa}";
+        }
+
         public static string Turmas(int idProfessor) {
             return EnderecoBase() + $"turma/listar?idProfessor={idProfessor}";
         }
@@ -52,6 +56,10 @@ namespace View.Util {
 
         public static string EnviarTarefaParaCorrecao() {
             return EnderecoBase() + $"resolucaotarefa/LiberarParaCorrecao";
+        }
+
+        public static string ResolucaoQuestaoSalvarResolucaoAluno() {
+            return EnderecoBase() + $"resolucaoquestao/SalvarResolucaoAluno";
         }
     }
 }
